@@ -37,6 +37,9 @@ plugins:
   - jekyll-relative-links
   - jekyll-titles-from-headings
 
+minima:
+  date_format: "%Y年%m月%d日"
+
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
