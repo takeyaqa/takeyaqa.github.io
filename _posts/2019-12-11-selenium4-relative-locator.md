@@ -7,7 +7,7 @@ tags: Selenium テスト テスト自動化
 
 この記事は[Selenium/Appium Advent Calendar 2019](https://qiita.com/advent-calendar/2019/selenium_and_appium)の11日目の記事です。
 
-[3日目の記事](https://qiita.com/takeya0x86/items/e9052739c0c98bca5a7d)ではSelenium 4の新機能をざっと紹介しましたが、この記事ではその中のひとつであるRelative Locatorについてより詳しく解説してみたいと思います。
+[3日目の記事]({% post_url 2019-12-03-selenium4-new-features-alpha %})ではSelenium 4の新機能をざっと紹介しましたが、この記事ではその中のひとつであるRelative Locatorについてより詳しく解説してみたいと思います。
 
 **この記事の内容はalpha版にもとづいています。正式リリースまでに内容が変更となる可能性がありますのでご注意ください。**
 
