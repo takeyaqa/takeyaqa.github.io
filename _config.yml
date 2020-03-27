@@ -21,6 +21,16 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://takeya0x86.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: takeya0x86
 github_username:  takeya0x86
+lang: ja-JP
+twitter:
+  username: takeya0x86
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      author: takeya0x86
 
 # Build settings
 markdown: kramdown
@@ -35,6 +45,7 @@ plugins:
   - jekyll-paginate
   - jekyll-readme-index
   - jekyll-relative-links
+  - jekyll-seo-tag
   - jekyll-titles-from-headings
 
 minima:
