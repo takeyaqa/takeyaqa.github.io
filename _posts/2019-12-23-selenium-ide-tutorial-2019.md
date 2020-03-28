@@ -7,7 +7,7 @@ tags: Selenium SeleniumIDE テスト テスト自動化
 
 この記事は [Selenium/Appium Advent Calendar 2019](https://qiita.com/advent-calendar/2019/selenium_and_appium) の23日目の記事です。
 
-また、この記事は [Selenium/Appium Advent Calendar 2018の14日目の記事](https://qiita.com/takeya0x86/items/486e91ae3cb272372ced) を2019年版としてアップデートしたものです。
+また、この記事は [Selenium/Appium Advent Calendar 2018の14日目の記事]({% post_url 2018-12-14-selenium-ide-tutorial %}) を2019年版としてアップデートしたものです。
 
 この記事ではツールを使ったブラウザの自動化をやってみたい！　という自動化ビギナーの皆さんに向けて、Selenium IDEを使った自動テストの作り方を（ほぼ）ステップバイステップで解説します。
 
@@ -23,7 +23,7 @@ Selenium IDEはブラウザの拡張機能として提供されているキャ�
 
 インストールするとブラウザのツールバーにアイコンが追加されます。起動するにはこのアイコンをクリックしてください。
 
-![selenium-ide-icon]({% link /assets/img/20191223/01.png %})
+![selenium-ide-icon]({% link /assets/img/2019/12/23/01.png %})
 
 ## テスト対象サイト
 
@@ -49,15 +49,15 @@ Selenium IDEはブラウザの拡張機能として提供されているキャ�
 
 ウェルカムページが表示されます。「Record a new test in a new project」を選択します。
 
-![selenium-ide-01]({% link /assets/img/20191223/02.png %})
+![selenium-ide-01]({% link /assets/img/2019/12/23/02.png %})
 
 つづいて、このテストプロジェクトの名前を入力します。
 
-![selenium-ide-02]({% link /assets/img/20191223/03.png %})
+![selenium-ide-02]({% link /assets/img/2019/12/23/03.png %})
 
 次に「base URL」を入力します。これはこのテストプロジェクトのスタート地点となるURLです。ここでは「http://example.selenium.jp/reserveApp_Renewal/ 」を入力します。
 
-![selenium-ide-03]({% link /assets/img/20191223/04.png %})
+![selenium-ide-03]({% link /assets/img/2019/12/23/04.png %})
 
 「Start Recording」をクリックすると新しいブラウザのウィンドウが立ち上がり「Selenium IDE is recoding...」と表示されます。今このウィンドウは操作が記録されている状態です。ではテストケースの通りに操作をしていきましょう。
 
@@ -73,16 +73,16 @@ Selenium IDEはブラウザの拡張機能として提供されているキャ�
 
 期待値の記録が終わったらブラウザのウィンドウを閉じて、Selenium IDEの停止ボタン（赤くて点滅してるやつ）をクリックして記録を止めます。
 
-![selenium-ide-04]({% link /assets/img/20191223/05.gif %})
+![selenium-ide-04]({% link /assets/img/2019/12/23/05.gif %})
 
 テストケースの名称を入力されるように促されるので、任意の名前を入力します。テストの内容やパターンがわかりやすい名前にするのがいいでしょう。これで記録は完了です。
 
-![selenium-ide-05]({% link /assets/img/20191223/06.png %})
+![selenium-ide-05]({% link /assets/img/2019/12/23/06.png %})
 
 
 ## テストの実行
 
-![selenium-ide-06]({% link /assets/img/20191223/07.png %})
+![selenium-ide-06]({% link /assets/img/2019/12/23/07.png %})
 
 
 出来上がりはおおむねこんな感じになると思います。余分なクリックなどが記録されている場合はその行を選択してDELETEキーを押せば削除することができます。
@@ -90,7 +90,7 @@ Selenium IDEはブラウザの拡張機能として提供されているキャ�
 さて、テストの実行です。といってもボタンを一つ押すだけです。
 Run all testsボタンをクリックしてください。新しいウィンドウが立ち上がり、自動で入力やクリックが進んでいくと思います。もし速すぎてよくわからないという場合は時計のアイコンをクリックすると速さを調節することができます。
 
-![selenium-ide-07]({% link /assets/img/20191223/08.gif %})
+![selenium-ide-07]({% link /assets/img/2019/12/23/08.gif %})
 
 実行後にはこのように結果がログとして記録されます。
 
