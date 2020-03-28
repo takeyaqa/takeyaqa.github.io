@@ -33,6 +33,7 @@ defaults:
     values:
       author: takeya0x86
 google_site_verification: sLMVbC0uM4Hem7Y8vRkyvI02f-2h4iWL6HA4UEPtDNE
+google_analytics: UA-162084685-1
 
 # Build settings
 markdown: kramdown
