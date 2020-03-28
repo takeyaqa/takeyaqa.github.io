@@ -25,9 +25,9 @@ public void testFullPageScreenshot() throws IOException {
 ```
 ## 実行結果
 
-![qiitaトップページ]({% link /assets/img/2019/07/08/01.png %})
+![qiitaトップページ]({% link /assets/img/2019/07/08/01_qiita-toppage.png %}){:width="1280px"}
 
-Firefoxでもページ全体のスクリーンショットが取得できていますね:tada:
+Firefoxでもページ全体のスクリーンショットが取得できていますね🎉
 
 ## 課題
 

@@ -57,7 +57,7 @@ jobs:
 3. JavaをセットアップしてGradleでテストを実行します
 4. `actions/upload-artifact` でスクリーンショットとログを保存します。保存したログ等はActionsの画面からダウンロードが可能です。
 
-![artifactsのダウンロード画面]({% link /assets/img/2019/09/25/01.png %})
+![artifactsのダウンロード画面]({% link /assets/img/2019/09/25/01_artifacts.png %}){:width="378px"}
 
 ## テストコード
 

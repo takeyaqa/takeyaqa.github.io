@@ -46,15 +46,15 @@ Selenium IDEはブラウザの拡張機能として提供されているキャ�
 
 実際に操作を記録していきましょう。アイコンをクリックしてSelenium IDEを起動してください。
 
-![selenium-ide-01]({% link /assets/img/2018/12/14/01.png %})
+![selenium-ide-01]({% link /assets/img/2018/12/14/01_selenium-ide.png %}){:width="1279px"}
 
 ウェルカムページが表示されます。「Record a new test in a new project」を選択します。
 
-![selenium-ide-02]({% link /assets/img/2018/12/14/02.png %})
+![selenium-ide-02]({% link /assets/img/2018/12/14/02_selenium-ide.png %}){:width="309px"}
 
 つづいて、このテストプロジェクトの名前を入力します。
 
-![selenium-ide-03]({% link /assets/img/2018/12/14/03.png %})
+![selenium-ide-03]({% link /assets/img/2018/12/14/03_selenium-ide.png %}){:width="309px"}
 
 次に「base URL」を入力します。これはこのテストプロジェクトのスタート地点となるURLです。ここでは「http://example.selenium.jp/reserveApp_Renewal/ 」を入力します。
 
@@ -68,26 +68,26 @@ Selenium IDEはブラウザの拡張機能として提供されているキャ�
 
 ボタンをクリックすると画面遷移して合計金額が表示されると思います。ここで期待結果の確認のためにassertを追加します。Selenium IDEの`assertText` は画面上の表示テキストと期待値のテキストが一致しているかどうかを検証することができます。
 
-![selenium-ide-04]({% link /assets/img/2018/12/14/04.gif %})
+![selenium-ide-04]({% link /assets/img/2018/12/14/04_selenium-ide.gif %}){:width="979px"}
 
 表示されている金額をドラッグして選択し、右クリックメニューを開きます。「Selenium IDE」から「Assert Text」を選択します。これで今表示されている値を期待値としたassertが作成されます。期待値を変えたい場合は後から画面で変更することができます。
 
 期待値の記録が終わったらブラウザのウィンドウを閉じて、Selenium IDEの停止ボタン（赤くて点滅してるやつ）をクリックして記録を止めます。
 
-![selenium-ide-05]({% link /assets/img/2018/12/14/05.png %})
+![selenium-ide-05]({% link /assets/img/2018/12/14/05_selenium-ide.png %}){:width="300px"}
 
 テストケースの名称を入力されるように促されるので、任意の名前を入力します。テストの内容やパターンがわかりやすい名前にするのがいいでしょう。これで記録は完了です。
 
 ## テストの実行
 
-![selenium-ide-06]({% link /assets/img/2018/12/14/06.png %})
+![selenium-ide-06]({% link /assets/img/2018/12/14/06_selenium-ide.png %}){:width="1279px"}
 
 出来上がりはおおむねこんな感じになると思います。余分なクリックなどが記録されている場合はその行を選択してDELETEキーを押せば削除することができます。
 
 さて、テストの実行です。といってもボタンを一つ押すだけです。
 Run Current Testボタンをクリックしてください。新しいウィンドウが立ち上がり、自動で入力やクリックが進んでいくと思います。もし速すぎてよくわからないという場合は時計のアイコンをクリックすると速さを調節することができます。
 
-![selenium-ide-07]({% link /assets/img/2018/12/14/07.png %})
+![selenium-ide-07]({% link /assets/img/2018/12/14/07_selenium-ide.png %}){:width="1279px"}
 
 実行後にはこのように結果がログとして記録されます。
 

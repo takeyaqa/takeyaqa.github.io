@@ -21,7 +21,7 @@ idやclassを中心とした従来のロケータに代わり、ある要素を�
 
 ここからはRelative Locatorの各メソッドを解説していきます。なお、現在リリースされているものがバージョン4.0.0-alpha-3のJavaバインディングのみなのでここではJavaを使って解説します。
 
-![empty]({% link /assets/img/2019/12/11/01.png %})
+![empty]({% link /assets/img/2019/12/11/01_empty.png %}){:width="166px"}
 
 また、説明をやり易くするために上記の画像の形をしたtable要素を例示に使います。各セル（td要素）にテキストと同じ数字（の英単語[^1]）がid属性として付与してあるものとします。
 
@@ -36,7 +36,7 @@ driver.findElements(withTagName("td").above(...));
 
 ### `above`
 
-![adove]({% link /assets/img/2019/12/11/02.png %})
+![above]({% link /assets/img/2019/12/11/02_above.png %}){:width="530px"}
 
 `above(By locator)`, `above(WebElement element)`は指定した要素よりも上の位置を検索対象とするメソッドです。`By`クラスのロケータを引数とするものと取得済みの`WebElement`を引数とするものの二つがあります（他の位置指定メソッドも同様です）。
 例示のテーブルで「8」のセルから上にある要素を取得したい場合は次のようなコードになります。
@@ -48,7 +48,7 @@ assertEquals(6, elements.size());
 
 ### `below`
 
-![below]({% link /assets/img/2019/12/11/03.png %})
+![below]({% link /assets/img/2019/12/11/03_below.png %}){:width="528px"}
 
 `below(By locator)`, `below(WebElement element)`は指定した要素よりも下の位置を検索対象とするメソッドです。
 例示のテーブルで「2」のセルから下にある要素を取得したい場合は次のようなコードになります。
@@ -60,7 +60,7 @@ assertEquals(6, elements.size());
 
 ### `toLeftOf`
 
-![leftOf]({% link /assets/img/2019/12/11/04.png %})
+![leftOf]({% link /assets/img/2019/12/11/04_leftOf.png %}){:width="532px"}
 
 `toLeftOf(By locator)`, `toLeftOf(WebElement element)`は指定した要素よりも左の位置を検索対象とするメソッドです。
 例示のテーブルで「6」のセルから左にある要素を取得したい場合は次のようなコードになります。
@@ -72,7 +72,7 @@ assertEquals(6, elements.size());
 
 ### `toRightOf`
 
-![rightOf]({% link /assets/img/2019/12/11/05.png %})
+![rightOf]({% link /assets/img/2019/12/11/05_rightOf.png %}){:width="528px"}
 
 `toRightOf(By locator)`, `toRightOf(WebElement element)`は指定した要素よりも右の位置を検索対象とするメソッドです。
 例示のテーブルで「4」のセルから右にある要素を取得したい場合は次のようなコードになります。
@@ -84,7 +84,7 @@ assertEquals(6, elements.size());
 
 ### `near`
 
-![near]({% link /assets/img/2019/12/11/06.png %})
+![near]({% link /assets/img/2019/12/11/06_near.png %}){:width="165px"}
 
 `near(By locator, int atMostDistanceInPixels)`, `near(WebElement element, int atMostDistanceInPixels)`, `near(By locator)`, `near(WebElement element)`は指定した要素の近くにある要素を検索対象とするメソッドです。 「近く」の距離は二つ目の引数で指定するピクセル数で決まります。指定がない場合のデフォルト値は50ピクセルです。
 例示のテーブルで「6」のセルの近く(50px)にある要素を取得したい場合は次のようなコードになります。

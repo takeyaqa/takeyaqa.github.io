@@ -13,7 +13,7 @@ Zaleniumについての解説はここでは行いません。[本家のサイ�
 
 ## Zaleniumのダッシュボード
 
-![zalenium-dashboard]({% link /assets/img/2018/12/05/01.png %})
+![zalenium-dashboard]({% link /assets/img/2018/12/05/01_zalenium-dashboard.png %}){:width="1240px"}
 
 ダッシュボードは上のようなレイアウトになっています。左側に実行したテストがリスト形式で表示され、それを選択すると右側のエリアに実行時間や環境などの詳細情報と録画した実行中画面が表示されます。
 
