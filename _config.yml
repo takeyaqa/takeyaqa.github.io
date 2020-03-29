@@ -52,6 +52,7 @@ plugins:
   - jekyll-readme-index
   - jekyll-relative-links
   - jekyll-seo-tag
+  - jekyll-sitemap
   - jekyll-titles-from-headings
 
 minima:
