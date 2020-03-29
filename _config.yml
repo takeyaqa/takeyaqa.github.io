@@ -25,6 +25,7 @@ lang: ja-JP
 author: takeya0x86
 twitter:
   username: takeya0x86
+  card: summary
 defaults:
   -
     scope:
@@ -32,6 +33,7 @@ defaults:
       type: "posts"
     values:
       author: takeya0x86
+      image: /assets/img/icon_1200.jpg
 google_site_verification: sLMVbC0uM4Hem7Y8vRkyvI02f-2h4iWL6HA4UEPtDNE
 google_analytics: UA-162084685-1
 
