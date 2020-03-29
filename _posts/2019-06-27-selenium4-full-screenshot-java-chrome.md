@@ -2,7 +2,7 @@
 layout: post
 title: "Selenium 4でページ全体のスクリーンショットを取得する（Java/Google Chrome）"
 date: 2019-06-27 09:00:00 +0900
-tags: Selenium テスト テスト自動化
+tags: Selenium テスト テスト自動化 Chrome
 ---
 
 ## Selenium WebDriverでのスクリーンショット

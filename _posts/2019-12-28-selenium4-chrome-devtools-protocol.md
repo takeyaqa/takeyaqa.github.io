@@ -2,7 +2,7 @@
 layout: post
 title: "Selenium 4新機能: Chrome DevTools Protocol"
 date: 2019-12-28 09:00:00 +0900
-tags: Selenium テスト テスト自動化
+tags: Selenium テスト テスト自動化 Chrome
 ---
 
 この記事は[Selenium/Appium Advent Calendar 2019](https://qiita.com/advent-calendar/2019/selenium_and_appium)の14日目の記事です。[^1]
