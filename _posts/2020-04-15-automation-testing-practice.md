@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "テスト自動化学習向けのデモサイトを作成しました"
-date: 2020-04-15 05:00:00 +0900
+date: 2020-04-15 09:00:00 +0900
 tags: Selenium テスト テスト自動化 webdriverio
 twitter:
   card: summary_large_image
