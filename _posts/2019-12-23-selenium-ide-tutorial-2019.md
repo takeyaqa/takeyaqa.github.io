@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Selenium IDEで「はじめよう自動化」ver.2019"
 date: 2019-12-23 09:00:00 +0900
 tags: Selenium SeleniumIDE テスト テスト自動化

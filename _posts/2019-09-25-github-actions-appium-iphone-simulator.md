@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Github Actions+AppiumでiPhone Simulatorを動かす"
 date: 2019-09-25 09:00:00 +0900
 tags: Selenium テスト テスト自動化 appium GitHubActions iOS

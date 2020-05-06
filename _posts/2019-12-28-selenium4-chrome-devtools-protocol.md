@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Selenium 4新機能: Chrome DevTools Protocol"
 date: 2019-12-28 09:00:00 +0900
 tags: Selenium テスト テスト自動化 Chrome

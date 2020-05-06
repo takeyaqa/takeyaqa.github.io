@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Playwrightファーストインプレッション"
 date: 2020-02-07 09:00:00 +0900
 tags: Selenium テスト テスト自動化 puppeteer Playwright

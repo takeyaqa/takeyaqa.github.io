@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Selenium 4でページ全体のスクリーンショットを取得する（Java/Firefox）"
 date: 2019-07-08 09:00:00 +0900
 tags: Selenium テスト テスト自動化 firefox

@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "SeleniumとBrowserMob ProxyでBASIC認証のページをテストする"
 date: 2019-07-16 09:00:00 +0900
 tags: Selenium テスト テスト自動化

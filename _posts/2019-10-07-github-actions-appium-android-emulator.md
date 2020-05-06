@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Github Actions+AppiumでAndroid Emulatorを動かす"
 date: 2019-10-07 09:00:00 +0900
 tags: Selenium Android テスト テスト自動化 appium GitHubActions

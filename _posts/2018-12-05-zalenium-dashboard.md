@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Zaleniumのダッシュボードを便利に使う"
 date: 2018-12-05 09:00:00 +0900
 tags: Selenium Zalenium テスト テスト自動化

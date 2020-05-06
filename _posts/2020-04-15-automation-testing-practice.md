@@ -1,11 +1,9 @@
 ---
-layout: post
 title: "テスト自動化学習向けのデモサイトを作成しました"
 date: 2020-04-15 09:00:00 +0900
 tags: Selenium テスト テスト自動化 webdriverio
-twitter:
-  card: summary_large_image
-image: /assets/img/2020/04/15/01_hotel-planisphere.png
+header:
+  og_image: /assets/img/2020/04/15/01_hotel-planisphere.png
 ---
 
 テスト自動化[^1]を学習する人向けに、テスト対象として使えるデモサイトを作成しました！　サンプルコードも作成しているのであわせてお使いください！

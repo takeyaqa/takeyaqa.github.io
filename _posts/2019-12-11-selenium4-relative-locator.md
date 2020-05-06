@@ -1,5 +1,4 @@
 ---
-layout: post
 title: "Selenium 4新機能: Relative Locator"
 date: 2019-12-11 09:00:00 +0900
 tags: Selenium テスト テスト自動化
