@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://takeya0x86.github.io/posts/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/selenium/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/webdriverio/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/%E3%83%86%E3%82%B9%E3%83%88/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2020/04/15/automation-testing-practice/</loc>
+    <lastmod>2020-04-15T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/playwright/</loc>
+    <lastmod>2020-02-07T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2020/02/07/playwright-first-impression/</loc>
+    <lastmod>2020-02-07T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/puppeteer/</loc>
+    <lastmod>2020-02-07T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/12/28/selenium4-chrome-devtools-protocol/</loc>
+    <lastmod>2019-12-28T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/12/23/selenium-ide-tutorial-2019/</loc>
+    <lastmod>2019-12-23T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/seleniumide/</loc>
+    <lastmod>2019-12-23T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/12/11/selenium4-relative-locator/</loc>
+    <lastmod>2019-12-11T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/12/03/selenium4-new-features-alpha/</loc>
+    <lastmod>2019-12-03T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/android/</loc>
+    <lastmod>2019-10-07T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/appium/</loc>
+    <lastmod>2019-10-07T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/10/07/github-actions-appium-android-emulator/</loc>
+    <lastmod>2019-10-07T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/githubactions/</loc>
+    <lastmod>2019-10-07T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/09/25/github-actions-appium-iphone-simulator/</loc>
+    <lastmod>2019-09-25T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/ios/</loc>
+    <lastmod>2019-09-25T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/07/16/selenium-browsermob-proxy-basic-auth/</loc>
+    <lastmod>2019-07-16T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/firefox/</loc>
+    <lastmod>2019-07-08T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/07/08/selenium4-full-screenshot-java-firefox/</loc>
+    <lastmod>2019-07-08T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/chrome/</loc>
+    <lastmod>2019-06-27T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2019/06/27/selenium4-full-screenshot-java-chrome/</loc>
+    <lastmod>2019-06-27T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2018/12/14/selenium-ide-tutorial/</loc>
+    <lastmod>2018-12-14T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/tags/zalenium/</loc>
+    <lastmod>2018-12-05T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/2018/12/05/zalenium-dashboard/</loc>
+    <lastmod>2018-12-05T09:00:00+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://takeya0x86.github.io/categories/</loc>
+  </url>
+  
+</urlset>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Zalenium on takeya&#39;s blog</title>
+    <link>https://takeya0x86.github.io/tags/zalenium/</link>
+    <description>Recent content in Zalenium on takeya&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>Creative Commons Attribution-ShareAlike 4.0 International</copyright>
+    <lastBuildDate>Wed, 05 Dec 2018 09:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://takeya0x86.github.io/tags/zalenium/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Zaleniumのダッシュボードを便利に使う</title>
+      <link>https://takeya0x86.github.io/2018/12/05/zalenium-dashboard/</link>
+      <pubDate>Wed, 05 Dec 2018 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/2018/12/05/zalenium-dashboard/</guid>
+      <description>&lt;p&gt;この記事は &lt;a href=&#34;https://qiita.com/advent-calendar/2018/selenium_and_appium&#34;&gt;Selenium/Appium Advent Calendar 2018&lt;/a&gt; の5日目の記事です。&lt;/p&gt;
+&lt;p&gt;この記事ではSelenium Gridの拡張であるZaleniumのダッシュボードについて、ちょっと便利な使い方を解説します。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

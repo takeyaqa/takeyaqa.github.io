@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="ja">
+
+    <meta name="author" content="takeya0x86">
+    <meta name="description" content="この記事はSelenium/Appium Advent Calendar 2019の14日目の記事です。1
+3日目の記事ではSelenium 4の新機能をざっと紹介しました。11日目の記事では新機能のひとつであるRelative Locatorについて解説しました。
+この記事ではもう一つの新機能であるChrome DevTools Protocol連携について解説したいと思います。
+この記事の内容はalpha版にもとづいています。正式リリースまでに内容が変更となる可能性がありますのでご注意ください。">
+    <meta name="keywords" content="blog,developer,personal,Selenium,Appium">
+
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Selenium 4新機能: Chrome DevTools Protocol"/>
+<meta name="twitter:description" content="この記事はSelenium/Appium Advent Calendar 2019の14日目の記事です。1
+3日目の記事ではSelenium 4の新機能をざっと紹介しました。11日目の記事では新機能のひとつであるRelative Locatorについて解説しました。
+この記事ではもう一つの新機能であるChrome DevTools Protocol連携について解説したいと思います。
+この記事の内容はalpha版にもとづいています。正式リリースまでに内容が変更となる可能性がありますのでご注意ください。"/>
+
+    <meta property="og:title" content="Selenium 4新機能: Chrome DevTools Protocol" />
+<meta property="og:description" content="この記事はSelenium/Appium Advent Calendar 2019の14日目の記事です。1
+3日目の記事ではSelenium 4の新機能をざっと紹介しました。11日目の記事では新機能のひとつであるRelative Locatorについて解説しました。
+この記事ではもう一つの新機能であるChrome DevTools Protocol連携について解説したいと思います。
+この記事の内容はalpha版にもとづいています。正式リリースまでに内容が変更となる可能性がありますのでご注意ください。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://takeya0x86.github.io/2019/12/28/selenium4-chrome-devtools-protocol/" />
+<meta property="article:published_time" content="2019-12-28T09:00:00+09:00" />
+<meta property="article:modified_time" content="2019-12-28T09:00:00+09:00" />
+
+
+    
+      <base href="https://takeya0x86.github.io/2019/12/28/selenium4-chrome-devtools-protocol/">
+    
+    <title>
+  Selenium 4新機能: Chrome DevTools Protocol · takeya&#39;s blog
+</title>
+
+    
+      <link rel="canonical" href="https://takeya0x86.github.io/2019/12/28/selenium4-chrome-devtools-protocol/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.74.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      takeya&#39;s blog
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://takeya0x86.github.io/posts/">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Selenium 4新機能: Chrome DevTools Protocol</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2019-12-28T09:00:00&#43;09:00'>
+                2019年12月28日
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              4分で読めます
+            </span>
+          </div>
+          
+          
+        </div>
+      </header>
+
+      <div>
+        
+        <p>この記事は<a href="https://qiita.com/advent-calendar/2019/selenium_and_appium">Selenium/Appium Advent Calendar 2019</a>の14日目の記事です。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p><a href="/2019/12/03/selenium4-new-features-alpha/">3日目の記事</a>ではSelenium 4の新機能をざっと紹介しました。<a href="/2019/12/11/selenium4-relative-locator/">11日目の記事</a>では新機能のひとつであるRelative Locatorについて解説しました。
+この記事ではもう一つの新機能であるChrome DevTools Protocol連携について解説したいと思います。</p>
+<p><strong>この記事の内容はalpha版にもとづいています。正式リリースまでに内容が変更となる可能性がありますのでご注意ください。</strong></p>
+<h2 id="chrome-devtools-protocolとは">Chrome DevTools Protocolとは</h2>
+<p>Chrome DevTools Protocol (CDP)とはChromeの開発者向け機能を呼び出すためのAPIです。Chromeにバンドルされているデベロッパーツールの各機能や、SeleniumのChromeDriverやGoogleの自動化ツールであるPuppeteerも裏側でこのAPIを使用しています。</p>
+<p><a href="https://chromedevtools.github.io/devtools-protocol/">Chrome DevTools Protocol Viewer</a></p>
+<p>CDPの詳細と各APIの解説は上記のサイトにまとまっています。</p>
+<h2 id="chromedriver-クラスのメソッド"><code>ChromeDriver</code> クラスのメソッド</h2>
+<p>ここからはCDPに関連した各メソッドを解説していきます。</p>
+<h3 id="executecdpcommand"><code>executeCdpCommand</code></h3>
+<p><code>executeCdpCommand</code>メソッドは<code>ChromeDriver</code>から直接呼び出し可能なメソッドです。CDPのコマンドを指定して実行できます。
+以下のコードでは <a href="https://chromedevtools.github.io/devtools-protocol/tot/Emulation#method-setGeolocationOverride">Emulation.setGeolocationOverride</a> メソッドを呼び出して位置情報の偽装を行っています。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup></p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testGeolocation</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://the-internet.herokuapp.com/geolocation&#34;</span><span style="color:#f92672">)</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">cssSelector</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;div#content &gt; div &gt; button&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+  assertEquals<span style="color:#f92672">(</span>35<span style="color:#f92672">,</span> Double<span style="color:#f92672">.</span><span style="color:#a6e22e">parseDouble</span><span style="color:#f92672">(</span>driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;lat-value&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">()),</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">9d</span><span style="color:#f92672">);</span>
+  assertEquals<span style="color:#f92672">(</span>139<span style="color:#f92672">,</span> Double<span style="color:#f92672">.</span><span style="color:#a6e22e">parseDouble</span><span style="color:#f92672">(</span>driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;long-value&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">()),</span> 0<span style="color:#f92672">.</span><span style="color:#a6e22e">9d</span><span style="color:#f92672">);</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">executeCdpCommand</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Emulation.setGeolocationOverride&#34;</span><span style="color:#f92672">,</span>
+      ImmutableMap<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;latitude&#34;</span><span style="color:#f92672">,</span> 51<span style="color:#f92672">.</span><span style="color:#a6e22e">500611d</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;longitude&#34;</span><span style="color:#f92672">,</span> <span style="color:#f92672">-</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">124611d</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;accuracy&#34;</span><span style="color:#f92672">,</span> 100<span style="color:#f92672">));</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">cssSelector</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;div#content &gt; div &gt; button&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+  assertEquals<span style="color:#f92672">(</span>51<span style="color:#f92672">.</span><span style="color:#a6e22e">500611d</span><span style="color:#f92672">,</span> Double<span style="color:#f92672">.</span><span style="color:#a6e22e">parseDouble</span><span style="color:#f92672">(</span>driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;lat-value&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">()));</span>
+  assertEquals<span style="color:#f92672">(-</span>0<span style="color:#f92672">.</span><span style="color:#a6e22e">124611d</span><span style="color:#f92672">,</span> Double<span style="color:#f92672">.</span><span style="color:#a6e22e">parseDouble</span><span style="color:#f92672">(</span>driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;long-value&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">()));</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="getdevtools"><code>getDevTools</code></h3>
+<p><code>getDevTools</code>メソッドは<code>ChromeDriver</code>から<code>DevTools</code>クラスのインスタンスを取得するメソッドです。後述のイベントリスナーを使う場合には<code>DevTools</code>クラスが必要になります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">var devTools <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span><span style="color:#a6e22e">getDevTools</span><span style="color:#f92672">();</span>
+</code></pre></div><h2 id="devtools-クラスのメソッド"><code>DevTools</code> クラスのメソッド</h2>
+<p>ここからはCDP連携のために新規追加された<code>DevTools</code>クラスについて解説します。</p>
+<h3 id="createsession-createsessionifthereisnotone-close"><code>createSession</code>, <code>createSessionIfThereIsNotOne</code>, <code>close</code></h3>
+<p>セッションの新規作成および終了をおこなうメソッド群です。なお、セッション管理まわりは現在も調整が入っているようで、APIにも変更がある可能性があります。</p>
+<h3 id="send"><code>send</code></h3>
+<p><code>send</code>はCDPのコマンドを実行するメソッドです。<code>executeCdpCommand</code>がコマンドを文字列の形式で指定したのに対して、こちらはドメイン毎に定義済みのクラスとメソッドを使います。
+以下のコードは<a href="https://chromedevtools.github.io/devtools-protocol/tot/Network#method-setExtraHTTPHeaders">Network.setExtraHTTPHeaders</a>メソッドを使ってBASIC認証の情報をヘッダーに付加する例です。<code>enable</code>および<code>disable</code>はネットワークのトラッキングなどの機能を有効・無効にするメソッドです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testBasicAuth</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  var devTools <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span><span style="color:#a6e22e">getDevTools</span><span style="color:#f92672">();</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">createSessionIfThereIsNotOne</span><span style="color:#f92672">();</span>
+  var userPass <span style="color:#f92672">=</span> Base64<span style="color:#f92672">.</span><span style="color:#a6e22e">getMimeEncoder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">encodeToString</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;admin:admin&#34;</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">());</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>Network<span style="color:#f92672">.</span><span style="color:#a6e22e">setExtraHTTPHeaders</span><span style="color:#f92672">(</span>ImmutableMap<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Authorization&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Basic &#34;</span> <span style="color:#f92672">+</span> userPass<span style="color:#f92672">)));</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>Network<span style="color:#f92672">.</span><span style="color:#a6e22e">enable</span><span style="color:#f92672">(</span>Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">(),</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">(),</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">()));</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://the-internet.herokuapp.com/basic_auth&#34;</span><span style="color:#f92672">);</span>
+  assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Basic Auth&#34;</span><span style="color:#f92672">,</span> driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">tagName</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;h3&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">getText</span><span style="color:#f92672">());</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>Network<span style="color:#f92672">.</span><span style="color:#a6e22e">disable</span><span style="color:#f92672">());</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h3 id="addlistener"><code>addListener</code></h3>
+<p><code>addListener</code>はCDPのうち「イベント」に分類されるコマンドを使うためのメソッドです。あるイベントの発生を契機に実行されるメソッドを登録します。
+以下のコードは<a href="https://chromedevtools.github.io/devtools-protocol/tot/Network#event-responseReceived">Network.responseReceived</a>イベントを使ってHTTPのレスポンスが発生した時にステータスコードを出力する例です。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@Test</span>
+<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testHttpStatusCode</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+  var devTools <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span><span style="color:#a6e22e">getDevTools</span><span style="color:#f92672">();</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">createSessionIfThereIsNotOne</span><span style="color:#f92672">();</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">addListener</span><span style="color:#f92672">(</span>Network<span style="color:#f92672">.</span><span style="color:#a6e22e">responseReceived</span><span style="color:#f92672">(),</span> <span style="color:#f92672">(</span>responseReceived <span style="color:#f92672">-&gt;</span> <span style="color:#f92672">{</span>
+    var status <span style="color:#f92672">=</span> responseReceived<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getStatus</span><span style="color:#f92672">();</span>
+    var url <span style="color:#f92672">=</span> responseReceived<span style="color:#f92672">.</span><span style="color:#a6e22e">getResponse</span><span style="color:#f92672">().</span><span style="color:#a6e22e">getUrl</span><span style="color:#f92672">();</span>
+    System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HTTP status: &#34;</span> <span style="color:#f92672">+</span> url <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> status<span style="color:#f92672">);</span>
+  <span style="color:#f92672">}));</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>Network<span style="color:#f92672">.</span><span style="color:#a6e22e">enable</span><span style="color:#f92672">(</span>Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">(),</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">(),</span> Optional<span style="color:#f92672">.</span><span style="color:#a6e22e">empty</span><span style="color:#f92672">()));</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://selenium.dev/&#34;</span><span style="color:#f92672">);</span>
+  devTools<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>Network<span style="color:#f92672">.</span><span style="color:#a6e22e">disable</span><span style="color:#f92672">());</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="まとめ">まとめ</h2>
+<p>Selenium 4の新機能であるChrome DevTools Protocol連携について解説しました。私見ですが、まだalpha版ということもあり、各メソッドのインターフェイスも定まってない感が強いです。
+なお、この記事のコードを試す際に使ったalpha-3ではCDPのコマンドに対応する各クラス・メソッド（この記事での<code>Network</code>クラスなど）は普通にJavaのクラスとして実装されていますが、コマンドの数が多いことやバージョンアップに追従する頻度<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>が増えることなどを理由にmasterブランチではJSON形式の仕様定義ファイルからコードを自動生成する方針で開発が進められています。
+このような事情があるためbetaから正式リリースまでの間にインターフェイスが大きく変わる可能性もあります。その辺りはまたbetaが出るくらいのタイミングで記事を書こうかなを思っています。</p>
+<p>以上です。では、春節（何年かはわからない）のリリースを楽しみに待ちましょう！</p>
+<hr>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>空いていたので後から書いています。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>ちなみに設定した座標はロンドンの時計塔です。 <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>CDPの仕様ははstableが長らく更新されておらず&quot;latest&quot;バージョンを使用することになるため。 <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>CC BY-SA 4.0</p>
+      
+      
+        ©
+        
+          2018 -
+        
+        2020
+         takeya0x86 
+      
+      
+         · 
+        利用技術 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+
+  </body>
+
+</html>

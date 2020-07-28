@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="ja">
+
+    <meta name="author" content="takeya0x86">
+    <meta name="description" content="Selenium WebDriverでのスクリーンショット
+すでに多くの記事があるように、Seleniumでスクリーンショットとして取得できるのはウェブページのうちブラウザのウィンドウの範囲のみとなっています。1
+
+これはSeleniumを使用して取得したスクリーンショットです。ページ下部が含まれていないのがわかると思います。
+これまでページ全体のスクリーンショットを得るためには、スクロールしながらスクリーンショットを取得しつなぎ合わせる、Xvfbなどの仮想フレームバッファで縦長のスクリーンを作成するなどの手段がありました。前者はスクロールに追従するメニューバーなどが何度も写ってしまう、後者は使える環境が限られるなどの問題がありました。
+この記事ではこれらの問題の解決を目指し、現在アルファ版がリリースされているSelenium 4を使ってページ全体のスクリーンショット取得を試みたいと思います。">
+    <meta name="keywords" content="blog,developer,personal,Selenium,Appium">
+
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Selenium 4でページ全体のスクリーンショットを取得する（Java/Google Chrome）"/>
+<meta name="twitter:description" content="Selenium WebDriverでのスクリーンショット
+すでに多くの記事があるように、Seleniumでスクリーンショットとして取得できるのはウェブページのうちブラウザのウィンドウの範囲のみとなっています。1
+
+これはSeleniumを使用して取得したスクリーンショットです。ページ下部が含まれていないのがわかると思います。
+これまでページ全体のスクリーンショットを得るためには、スクロールしながらスクリーンショットを取得しつなぎ合わせる、Xvfbなどの仮想フレームバッファで縦長のスクリーンを作成するなどの手段がありました。前者はスクロールに追従するメニューバーなどが何度も写ってしまう、後者は使える環境が限られるなどの問題がありました。
+この記事ではこれらの問題の解決を目指し、現在アルファ版がリリースされているSelenium 4を使ってページ全体のスクリーンショット取得を試みたいと思います。"/>
+
+    <meta property="og:title" content="Selenium 4でページ全体のスクリーンショットを取得する（Java/Google Chrome）" />
+<meta property="og:description" content="Selenium WebDriverでのスクリーンショット
+すでに多くの記事があるように、Seleniumでスクリーンショットとして取得できるのはウェブページのうちブラウザのウィンドウの範囲のみとなっています。1
+
+これはSeleniumを使用して取得したスクリーンショットです。ページ下部が含まれていないのがわかると思います。
+これまでページ全体のスクリーンショットを得るためには、スクロールしながらスクリーンショットを取得しつなぎ合わせる、Xvfbなどの仮想フレームバッファで縦長のスクリーンを作成するなどの手段がありました。前者はスクロールに追従するメニューバーなどが何度も写ってしまう、後者は使える環境が限られるなどの問題がありました。
+この記事ではこれらの問題の解決を目指し、現在アルファ版がリリースされているSelenium 4を使ってページ全体のスクリーンショット取得を試みたいと思います。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://takeya0x86.github.io/2019/06/27/selenium4-full-screenshot-java-chrome/" />
+<meta property="article:published_time" content="2019-06-27T09:00:00+09:00" />
+<meta property="article:modified_time" content="2019-06-27T09:00:00+09:00" />
+
+
+    
+      <base href="https://takeya0x86.github.io/2019/06/27/selenium4-full-screenshot-java-chrome/">
+    
+    <title>
+  Selenium 4でページ全体のスクリーンショットを取得する（Java/Google Chrome） · takeya&#39;s blog
+</title>
+
+    
+      <link rel="canonical" href="https://takeya0x86.github.io/2019/06/27/selenium4-full-screenshot-java-chrome/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.74.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      takeya&#39;s blog
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://takeya0x86.github.io/posts/">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Selenium 4でページ全体のスクリーンショットを取得する（Java/Google Chrome）</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2019-06-27T09:00:00&#43;09:00'>
+                2019年6月27日
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              5分で読めます
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="/tags/selenium/">Selenium</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88/">テスト</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96/">テスト自動化</a>
+      <span class="separator">•</span>
+    <a href="/tags/chrome/">Chrome</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="selenium-webdriverでのスクリーンショット">Selenium WebDriverでのスクリーンショット</h2>
+<p>すでに多くの記事があるように、Seleniumでスクリーンショットとして取得できるのはウェブページのうちブラウザのウィンドウの範囲のみとなっています。<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup></p>
+<p><img src="/images/2019/06/27/01_qiita-toppage.png" alt="Qiitaトップページのスクリーンショット（一部分のみ）"></p>
+<p>これはSeleniumを使用して取得したスクリーンショットです。ページ下部が含まれていないのがわかると思います。
+これまでページ全体のスクリーンショットを得るためには、スクロールしながらスクリーンショットを取得しつなぎ合わせる、Xvfbなどの仮想フレームバッファで縦長のスクリーンを作成するなどの手段がありました。前者はスクロールに追従するメニューバーなどが何度も写ってしまう、後者は使える環境が限られるなどの問題がありました。</p>
+<p>この記事ではこれらの問題の解決を目指し、現在アルファ版がリリースされているSelenium 4を使ってページ全体のスクリーンショット取得を試みたいと思います。</p>
+<h2 id="selenium-4">Selenium 4</h2>
+<p>2019年4月19日にSelenium 4.0.0-alpha-1がリリースされました。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> Selenium 4ではいくつかの新機能が予告されていますが、<sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup> 今回のリリースではChrome DevTools Protocol (CDP)の呼び出し機能が追加されています。CDPとはChromeの開発者向け機能を呼び出すためのAPIです。SeleniumのChromedriverやGoogleの自動化ツールである<a href="https://pptr.dev/">Puppeteer</a>も裏側でこのAPIを使用しています。それが今回直接呼び出せるようになったわけです。</p>
+<p>さて、前述のPuppeteerにはスクリーンショットをページ全体にするオプションがあります。<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup> したがってPuppeteerと同じ処理を実装すればSeleniumでもページ全体のスクリーンショットが取得できるのではという気がしてきます。これを検証してみましょう。</p>
+<h2 id="コード">コード</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@SuppressWarnings</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;unchecked&#34;</span><span style="color:#f92672">)</span>
+<span style="color:#66d9ef">public</span> <span style="color:#f92672">&lt;</span>X<span style="color:#f92672">&gt;</span> X <span style="color:#a6e22e">getFullPageScreenshotAs</span><span style="color:#f92672">(</span>OutputType<span style="color:#f92672">&lt;</span>X<span style="color:#f92672">&gt;</span> outputType<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+
+  <span style="color:#75715e">// get current layout
+</span><span style="color:#75715e"></span>  Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> layoutMetrics <span style="color:#f92672">=</span> driver
+      <span style="color:#f92672">.</span><span style="color:#a6e22e">executeCdpCommand</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Page.getLayoutMetrics&#34;</span><span style="color:#f92672">,</span> Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">emptyMap</span><span style="color:#f92672">());</span>
+
+  <span style="color:#75715e">// override device metrics
+</span><span style="color:#75715e"></span>  Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;</span> contentSize <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;)</span> layoutMetrics<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;contentSize&#34;</span><span style="color:#f92672">);</span>
+  <span style="color:#66d9ef">long</span> width <span style="color:#f92672">=</span> contentSize<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;width&#34;</span><span style="color:#f92672">);</span>
+  <span style="color:#66d9ef">long</span> height <span style="color:#f92672">=</span> contentSize<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;height&#34;</span><span style="color:#f92672">);</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">executeCdpCommand</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Emulation.setDeviceMetricsOverride&#34;</span><span style="color:#f92672">,</span>
+      ImmutableMap<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mobile&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;width&#34;</span><span style="color:#f92672">,</span> width<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;height&#34;</span><span style="color:#f92672">,</span> height<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;deviceScaleFactor&#34;</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">));</span>
+
+  <span style="color:#75715e">// capture screenshot
+</span><span style="color:#75715e"></span>  Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> clip <span style="color:#f92672">=</span> ImmutableMap
+      <span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;x&#34;</span><span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;y&#34;</span><span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;width&#34;</span><span style="color:#f92672">,</span> width<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;height&#34;</span><span style="color:#f92672">,</span> height<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;scale&#34;</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">);</span>
+  Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Object<span style="color:#f92672">&gt;</span> result <span style="color:#f92672">=</span> driver<span style="color:#f92672">.</span><span style="color:#a6e22e">executeCdpCommand</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Page.captureScreenshot&#34;</span><span style="color:#f92672">,</span> ImmutableMap<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;clip&#34;</span><span style="color:#f92672">,</span> clip<span style="color:#f92672">));</span>
+
+  <span style="color:#75715e">// restore device metrics
+</span><span style="color:#75715e"></span>  Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;</span> visualViewport <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>Map<span style="color:#f92672">&lt;</span>String<span style="color:#f92672">,</span> Long<span style="color:#f92672">&gt;)</span> layoutMetrics<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;layoutViewport&#34;</span><span style="color:#f92672">);</span>
+  <span style="color:#66d9ef">long</span> clientWidth <span style="color:#f92672">=</span> visualViewport<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;clientWidth&#34;</span><span style="color:#f92672">);</span>
+  <span style="color:#66d9ef">long</span> clientHeight <span style="color:#f92672">=</span> visualViewport<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;clientHeight&#34;</span><span style="color:#f92672">);</span>
+  driver<span style="color:#f92672">.</span><span style="color:#a6e22e">executeCdpCommand</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Emulation.setDeviceMetricsOverride&#34;</span><span style="color:#f92672">,</span>
+      ImmutableMap<span style="color:#f92672">.</span><span style="color:#a6e22e">of</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;mobile&#34;</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;width&#34;</span><span style="color:#f92672">,</span> clientWidth<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;height&#34;</span><span style="color:#f92672">,</span> clientHeight<span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;deviceScaleFactor&#34;</span><span style="color:#f92672">,</span> 1<span style="color:#f92672">));</span>
+
+  String base64 <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>String<span style="color:#f92672">)</span> result<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;data&#34;</span><span style="color:#f92672">);</span>
+
+  <span style="color:#66d9ef">return</span> outputType<span style="color:#f92672">.</span><span style="color:#a6e22e">convertFromBase64Png</span><span style="color:#f92672">(</span>base64<span style="color:#f92672">);</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><h2 id="実行結果">実行結果</h2>
+<p><img src="/images/2019/06/27/02_qiita-toppage-full.png" alt="qiitaのトップページ"></p>
+<h2 id="解説">解説</h2>
+<p>ページ全体のスクリーンショットが取得できていますね🎉</p>
+<p><a href="https://github.com/GoogleChrome/puppeteer/blob/v1.18.0/lib/Page.js#L801-L889">https://github.com/GoogleChrome/puppeteer/blob/v1.18.0/lib/Page.js#L801-L889</a>
+Puppeteerでスクリーンショットを取得しているコードです。上記のメソッドはこのコードを簡略化してJavaに置き換えたものです。なおインターフェイスは標準の <code>getScreenshotAs</code> メソッドにあわせてあります。
+<code>executeCdpCommand</code> が新しく追加されたメソッドです。一つ目の引数にCDPのコマンドを、二つ目の引数にパラメータを指定します。
+実際の処理内容としては<code>DeviceMertics</code>の縦横の数値をコンテンツの縦横の数値で一時的に上書きすることで実現しているようです。</p>
+<h2 id="課題">課題</h2>
+<p><strong>実行環境とウェブページの組み合わせによってはうまく動作しないようです。</strong>
+ここに貼った画像はmacOSで実行したものです。同じページを対象にWindowsでも実行してみましたが、コンテンツの高さの倍くらいの高さを持った画像になりました。また、Windowsでは他のサイトでも真っ白の画像になる、ページの端が切れてしまうなどの問題が発生しました。macOSでもウェブページによっては期待した通りの結果にならない可能性があります。</p>
+<p>インフィニットスクロールのページでは取得タイミングによってスクリーンショットに含まれる範囲が変わります。</p>
+<p>また実装ですが、上記のコードでは <code>DeviceMertics</code> を書き換える時と戻す時にいくつかの引数を指定しています。このうち <code>mobile</code> や <code>deviceScaleFactor</code> の値は現在値がAPIで取得できない（と思う）ので、現在の設定を変数などで保持しておく必要があります。
+具体的には <a href="http://chromedriver.chromium.org/mobile-emulation">mobileEmulation</a> などを使っている場合が該当します。今回は <code>true</code> と <code>1</code> で固定していますが、本来はエミュレーション設定にあわせて指定しなければいけません。</p>
+<h2 id="最後に">最後に</h2>
+<p>Selenium 4の機能を使うことでページ全体のスクリーンショットが取得できました。
+前述のようにPuppeteerでは以前から可能だったことなので、はじめからPuppeteerを使えばいいのでは？という意見もあると思いますし、それはその通りだと思います。しかし、ツールは多様な使用者や環境に対応できるよう複数の選択肢が用意されるべきだと思います。その選択肢が増えたという点で今回のアップデートは歓迎すべきものだと思います。ちょっと余談でした。</p>
+<p>以上です。この情報が皆さんのスクリーンショットライフ（？）の一助となれば幸いです。</p>
+<hr>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>これはW3CのWebDriver仕様にも記載されています。<a href="https://w3c.github.io/webdriver/#screen-capture">https://w3c.github.io/webdriver/#screen-capture</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p>この日はSeleniumConf Tokyoの開催日でした。<a href="https://conf.selenium.jp/">https://conf.selenium.jp/</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p>プロジェクトリードのSimon Stewart氏の解説動画があります。<a href="https://www.youtube.com/watch?v=6iHdvOYdJk8">https://www.youtube.com/watch?v=6iHdvOYdJk8</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://pptr.dev/#?product=Puppeteer&amp;version=v1.17.0&amp;show=api-pagescreenshotoptions">https://pptr.dev/#?product=Puppeteer&amp;version=v1.17.0&amp;show=api-pagescreenshotoptions</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>CC BY-SA 4.0</p>
+      
+      
+        ©
+        
+          2018 -
+        
+        2020
+         takeya0x86 
+      
+      
+         · 
+        利用技術 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+
+  </body>
+
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="ja">
+
+    <meta name="author" content="takeya0x86">
+    <meta name="description" content="Playwrightとは
+2020年の1月末頃から話題になっているNode.js向けのブラウザ自動化ライブラリです。GithubのMicrosoftリポジトリで公開されています。
+https://github.com/Microsoft/playwright
+READMEの記述1によると、GoogleでPuppeteerを開発していたチームがその後移って来て開発を開始したそうです。
+Puppeteerとの差異としてよりtesting-friendlyなAPIを目指すこと、ChromeだけでなくFirefox、Webkitにも単一のAPIで対応すること、そのために互換性を持たない変更が必要になったためPuppeteerからコードベースを作り直しているたことなどが表明されています。
+この記事ではPlaywrightをさわってみた所感をPuppeteerやWebDriverと比較をしながら書いていこうと思います。
+Playwrightのバージョンは執筆時で最新のv0.10.0、Puppeteerは同じく最新のv2.1.0です。">
+    <meta name="keywords" content="blog,developer,personal,Selenium,Appium">
+
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Playwrightファーストインプレッション"/>
+<meta name="twitter:description" content="Playwrightとは
+2020年の1月末頃から話題になっているNode.js向けのブラウザ自動化ライブラリです。GithubのMicrosoftリポジトリで公開されています。
+https://github.com/Microsoft/playwright
+READMEの記述1によると、GoogleでPuppeteerを開発していたチームがその後移って来て開発を開始したそうです。
+Puppeteerとの差異としてよりtesting-friendlyなAPIを目指すこと、ChromeだけでなくFirefox、Webkitにも単一のAPIで対応すること、そのために互換性を持たない変更が必要になったためPuppeteerからコードベースを作り直しているたことなどが表明されています。
+この記事ではPlaywrightをさわってみた所感をPuppeteerやWebDriverと比較をしながら書いていこうと思います。
+Playwrightのバージョンは執筆時で最新のv0.10.0、Puppeteerは同じく最新のv2.1.0です。"/>
+
+    <meta property="og:title" content="Playwrightファーストインプレッション" />
+<meta property="og:description" content="Playwrightとは
+2020年の1月末頃から話題になっているNode.js向けのブラウザ自動化ライブラリです。GithubのMicrosoftリポジトリで公開されています。
+https://github.com/Microsoft/playwright
+READMEの記述1によると、GoogleでPuppeteerを開発していたチームがその後移って来て開発を開始したそうです。
+Puppeteerとの差異としてよりtesting-friendlyなAPIを目指すこと、ChromeだけでなくFirefox、Webkitにも単一のAPIで対応すること、そのために互換性を持たない変更が必要になったためPuppeteerからコードベースを作り直しているたことなどが表明されています。
+この記事ではPlaywrightをさわってみた所感をPuppeteerやWebDriverと比較をしながら書いていこうと思います。
+Playwrightのバージョンは執筆時で最新のv0.10.0、Puppeteerは同じく最新のv2.1.0です。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://takeya0x86.github.io/2020/02/07/playwright-first-impression/" />
+<meta property="article:published_time" content="2020-02-07T09:00:00+09:00" />
+<meta property="article:modified_time" content="2020-02-07T09:00:00+09:00" />
+
+
+    
+      <base href="https://takeya0x86.github.io/2020/02/07/playwright-first-impression/">
+    
+    <title>
+  Playwrightファーストインプレッション · takeya&#39;s blog
+</title>
+
+    
+      <link rel="canonical" href="https://takeya0x86.github.io/2020/02/07/playwright-first-impression/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.74.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      takeya&#39;s blog
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://takeya0x86.github.io/posts/">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Playwrightファーストインプレッション</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2020-02-07T09:00:00&#43;09:00'>
+                2020年2月7日
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              7分で読めます
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="/tags/selenium/">Selenium</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88/">テスト</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96/">テスト自動化</a>
+      <span class="separator">•</span>
+    <a href="/tags/puppeteer/">puppeteer</a>
+      <span class="separator">•</span>
+    <a href="/tags/playwright/">Playwright</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="playwrightとは">Playwrightとは</h2>
+<p>2020年の1月末頃から話題になっているNode.js向けのブラウザ自動化ライブラリです。GithubのMicrosoftリポジトリで公開されています。</p>
+<p><a href="https://github.com/Microsoft/playwright">https://github.com/Microsoft/playwright</a></p>
+<p>READMEの記述<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>によると、GoogleでPuppeteerを開発していたチームがその後移って来て開発を開始したそうです。
+Puppeteerとの差異としてよりtesting-friendlyなAPIを目指すこと、ChromeだけでなくFirefox、Webkitにも単一のAPIで対応すること、そのために互換性を持たない変更が必要になったためPuppeteerからコードベースを作り直しているたことなどが表明されています。</p>
+<p>この記事ではPlaywrightをさわってみた所感をPuppeteerやWebDriverと比較をしながら書いていこうと思います。</p>
+<p>Playwrightのバージョンは執筆時で最新の<code>v0.10.0</code>、Puppeteerは同じく最新の<code>v2.1.0</code>です。</p>
+<h2 id="puppeteerからの変更点">Puppeteerからの変更点</h2>
+<p>Puppeteerとの比較は同じテストシナリオを実装する際のAPI（メソッド）の違いを中心に見ていきます。</p>
+<h3 id="今回のシナリオ">今回のシナリオ</h3>
+<p>サンプルとして使用するテストシナリオです。PlaywrightのREADMEに記載されているサンプルとほぼ同様の内容にしています。</p>
+<ol>
+<li>ブラウザを起動してGoogle Pixel 2と同じ画面解像度・UserAgentに設定する</li>
+<li>現在地の位置情報を新宿駅の緯度経度に設定する</li>
+<li>Googleマップを開く</li>
+<li>「現在地」のボタンを押す</li>
+<li>Ajax通信の完了を待機する</li>
+<li>スクリーンショットを取得する</li>
+<li>ブラウザを閉じる</li>
+</ol>
+<h3 id="今回のサンプルコード">今回のサンプルコード</h3>
+<p>まず、今回のシナリオをPuppeteerを使って書くと以下のようなコードになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">puppeteer</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;puppeteer&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pixel2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">puppeteer</span>.<span style="color:#a6e22e">devices</span>[<span style="color:#e6db74">&#39;Pixel 2&#39;</span>];
+
+(<span style="color:#a6e22e">async</span> () =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">browser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">puppeteer</span>.<span style="color:#a6e22e">launch</span>();
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">defaultBrowserContext</span>().<span style="color:#a6e22e">overridePermissions</span>(<span style="color:#e6db74">&#39;https://www.google.co.jp&#39;</span>, [<span style="color:#e6db74">&#39;geolocation&#39;</span>]);
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">newPage</span>();
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setViewport</span>(<span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">viewport</span>);
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setUserAgent</span>(<span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">userAgent</span>);
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setGeolocation</span>({ <span style="color:#a6e22e">latitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">35.690833</span>, <span style="color:#a6e22e">longitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">139.700278</span> });
+
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#e6db74">&#39;https://www.google.co.jp/maps&#39;</span>);
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">waitForXPath</span>(<span style="color:#e6db74">&#39;//*[text()=&#34;現在地&#34;]&#39;</span>, { <span style="color:#a6e22e">visible</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> });
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">$x</span>(<span style="color:#e6db74">&#39;//*[text()=&#34;現在地&#34;]&#39;</span>);
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">handle</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">waitForRequest</span>(<span style="color:#a6e22e">req</span> =&gt; <span style="color:#f92672">/</span>.<span style="color:#f92672">*</span><span style="color:#a6e22e">pwa</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">/</span><span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">js</span>.<span style="color:#f92672">*</span><span style="color:#960050;background-color:#1e0010">/.test(req.url()));</span>
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">screenshot</span>({ <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;shinjuku-android-1.png&#39;</span> });
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">close</span>();
+})();
+</code></pre></div><p>続いて同じシナリオをPlaywrightで書くと以下のようになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">playwright</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#39;playwright&#39;</span>);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pixel2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">playwright</span>.<span style="color:#a6e22e">devices</span>[<span style="color:#e6db74">&#39;Pixel 2&#39;</span>];
+
+(<span style="color:#a6e22e">async</span> () =&gt; {
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">browser</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">playwright</span>.<span style="color:#a6e22e">chromium</span>.<span style="color:#a6e22e">launch</span>();
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">newContext</span>({
+    <span style="color:#a6e22e">viewport</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">viewport</span>,
+    <span style="color:#a6e22e">userAgent</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">userAgent</span>,
+    <span style="color:#a6e22e">geolocation</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">latitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">35.690833</span>, <span style="color:#a6e22e">longitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">139.700278</span> },
+    <span style="color:#a6e22e">permissions</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;https://www.google.co.jp&#39;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;geolocation&#39;</span>] }
+  });
+
+  <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">newPage</span>(<span style="color:#e6db74">&#39;https://www.google.co.jp/maps&#39;</span>);
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">click</span>(<span style="color:#e6db74">&#39;text=&#34;現在地&#34;&#39;</span>);
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">waitForRequest</span>(<span style="color:#e6db74">/.*pwa\/net.js.*/</span>);
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">screenshot</span>({ <span style="color:#a6e22e">path</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;shinjuku-android-2.png&#39;</span> });
+  <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">close</span>();
+})();
+</code></pre></div><p>以下、順に見ていきます。</p>
+<h3 id="browsercontextクラス"><code>BrowserContext</code>クラス</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Puppeteer
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pixel2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">puppeteer</span>.<span style="color:#a6e22e">devices</span>[<span style="color:#e6db74">&#39;Pixel 2&#39;</span>];
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">defaultBrowserContext</span>().<span style="color:#a6e22e">overridePermissions</span>(<span style="color:#e6db74">&#39;https://www.google.co.jp&#39;</span>, [<span style="color:#e6db74">&#39;geolocation&#39;</span>]);
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">newPage</span>();
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setViewport</span>(<span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">viewport</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setUserAgent</span>(<span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">userAgent</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">setGeolocation</span>({ <span style="color:#a6e22e">latitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">35.690833</span>, <span style="color:#a6e22e">longitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">139.700278</span> });
+
+<span style="color:#75715e">// Playwright
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">pixel2</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">playwright</span>.<span style="color:#a6e22e">devices</span>[<span style="color:#e6db74">&#39;Pixel 2&#39;</span>];
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">context</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">browser</span>.<span style="color:#a6e22e">newContext</span>({
+  <span style="color:#a6e22e">viewport</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">viewport</span>,
+  <span style="color:#a6e22e">userAgent</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">pixel2</span>.<span style="color:#a6e22e">userAgent</span>,
+  <span style="color:#a6e22e">geolocation</span><span style="color:#f92672">:</span> { <span style="color:#a6e22e">latitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">35.690833</span>, <span style="color:#a6e22e">longitude</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">139.700278</span> },
+  <span style="color:#a6e22e">permissions</span><span style="color:#f92672">:</span> { <span style="color:#e6db74">&#39;https://www.google.co.jp&#39;</span><span style="color:#f92672">:</span> [<span style="color:#e6db74">&#39;geolocation&#39;</span>] }
+});
+</code></pre></div><p><code>devices</code>は主要なモバイル端末の解像度やUserAgentの情報が入っているオブジェクトです。これは双方にあります。<sup id="fnref:2"><a href="#fn:2" class="footnote-ref" role="doc-noteref">2</a></sup> <sup id="fnref:3"><a href="#fn:3" class="footnote-ref" role="doc-noteref">3</a></sup>
+大きく違うのはその後のブラウザの初期設定をするところです。設定ができる項目は同じですが、散らばっていた設定がPlaywrightでは<code>newContext</code>メソッドに集約されているのがわかると思います。
+Playwrightでは<code>BrowserContext</code>クラスが拡張され、エミュレーションなどの設定が<code>Page</code>クラスよりも一つ下のレイヤでできるようになっています。Playwrightはこの<code>BrowserContext</code>クラスをブラウザ操作の基点として使うようです。</p>
+<h3 id="selector-enginesとdefault-wait">Selector enginesとDefault wait</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Puppeteer
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#66d9ef">goto</span>(<span style="color:#e6db74">&#39;https://www.google.co.jp/maps&#39;</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">waitForXPath</span>(<span style="color:#e6db74">&#39;//*[text()=&#34;現在地&#34;]&#39;</span>, { <span style="color:#a6e22e">visible</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">true</span> });
+<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">handle</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">$x</span>(<span style="color:#e6db74">&#39;//*[text()=&#34;現在地&#34;]&#39;</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">handle</span>[<span style="color:#ae81ff">0</span>].<span style="color:#a6e22e">click</span>();
+
+<span style="color:#75715e">// Playwright
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">page</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">await</span> <span style="color:#a6e22e">context</span>.<span style="color:#a6e22e">newPage</span>(<span style="color:#e6db74">&#39;https://www.google.co.jp/maps&#39;</span>);
+<span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">click</span>(<span style="color:#e6db74">&#39;text=&#34;現在地&#34;&#39;</span>);
+</code></pre></div><p>PlaywrightではCSS SelectorとXPathに加えて、書式の違う複数のセレクタが使用可能になっており、現在利用可能なセレクタは<a href="https://github.com/microsoft/playwright/blob/v0.10.0/docs/selectors.md">Selector engines</a>にリストされています。
+サンプルではテキストノードの値とマッチさせる<code>text</code>セレクタを使用しています。 PuppeteerではCSS SelectorとXPathで別のメソッド（<code>$</code>と<code>$x</code>）となっており、<code>click</code>メソッドではCSS Selectorのみ使用可能でした。Playwrightでは<code>selector name=selector body</code>の書式で複数のセレクタに対応するようになっています。
+また、Playwrightでは<code>click</code>メソッドがデフォルトで対象要素が<code>visible</code>になるまで待機するようになっています。<code>waitForXPath</code>が無くても相当する機能が<code>click</code>に含まれているという感じです。</p>
+<h3 id="waitforrequest"><code>waitForRequest</code></h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#75715e">// Puppeteer
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">waitForRequest</span>(<span style="color:#a6e22e">req</span> =&gt; <span style="color:#f92672">/</span>.<span style="color:#f92672">*</span><span style="color:#a6e22e">pwa</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">/</span><span style="color:#a6e22e">net</span>.<span style="color:#a6e22e">js</span>.<span style="color:#f92672">*</span><span style="color:#960050;background-color:#1e0010">/.test(req.url()));</span>
+
+<span style="color:#75715e">// Playwright
+</span><span style="color:#75715e"></span><span style="color:#a6e22e">await</span> <span style="color:#a6e22e">page</span>.<span style="color:#a6e22e">waitForRequest</span>(<span style="color:#e6db74">/.*pwa\/net.js.*/</span>);
+</code></pre></div><p><code>waitForRequest</code>は指定したURLのリクエストが完了するまで待機するメソッドです。このメソッドは双方にありますが、小さな変更点としてPlaywrightではURLの正規表現を直接引数に取れるように変更されています。
+このメソッドの存在は後述のWebDriverとの大きな違いとなります。</p>
+<h2 id="selenium-webdriverとの比較">Selenium WebDriverとの比較</h2>
+<p>ここからはWebDriverとの比較を行います。</p>
+<h3 id="サポートされているwebブラウザの機能">サポートされているWebブラウザの機能</h3>
+<p>前述のサンプルコードの通り、Playwrightはgeolocationの設定やモバイル端末のエミュレーション機能などが実装されており、かつこれをブラウザの種類を問わず同じAPIで提供することを目標にしています。
+WebDriverはブラウザの基本操作を以外でAPIが定義されているのはCookieの読み書き<sup id="fnref:4"><a href="#fn:4" class="footnote-ref" role="doc-noteref">4</a></sup>くらいです。モバイル端末のエミュレーションは存在していますがChromeDriverの独自の機能となっており統一されたAPIは提供されていません。<sup id="fnref:5"><a href="#fn:5" class="footnote-ref" role="doc-noteref">5</a></sup></p>
+<h3 id="イベント駆動api">イベント駆動API</h3>
+<p>Playwrightは<code>waitForRequest</code>の他にもPage上の<code>load</code>、<code>domcontentloaded</code>、<code>close</code>などのイベントをきっかけにする<code>waitForEvent</code>などのブラウザ側から起動するAPIが実装されています。これはPlaywrightがブラウザと双方向通信をしているため可能になっています。これらのAPIによってPlaywrightはAjax通信の終了や他のJavaScript処理の終了を確実に検知してからテストスクリプトを実行することができます。
+WebDriverはこういったAPIがないため、イベントの完了を検知するには画面上の変化（ボタンの状態、メッセージの表示）をポーリングすることになります。</p>
+<h3 id="クラウド環境での実行">クラウド環境での実行</h3>
+<p>一方でWebDriverは物理的／仮想的に別のマシンにあるブラウザを操作することができます。これはWebDriverが特定のプログラミング言語のライブラリではなく、HTTPプロトコルだから可能になっています。テストスクリプトとブラウザ間の通信がHTTPなので、テストスクリプトとブラウザが同じ環境にある必要がありません。これを利用して<a href="https://saucelabs.com/">Sauce Labs</a>や<a href="https://www.browserstack.com/">BrowserStack</a>のようにクラウド環境にブラウザを用意しSelenium WebDriverで接続するサービスが提供されています。
+Playwrightは現在このような機能はありませんが、前述の<code>BrowserContext</code>クラスを基点にクラウドネイティブに使えるようにする計画があるようです。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>Playwrightについて駆け足で追ってきました。まだ見れていない機能がたくさんあるため機会を見て記事を書いていきたいです。
+新しいツールが出てくるとこれまでのツールはどうなるんだと考えるのですが、それぞれ影響しあってより洗練されていくのが望ましいですね。</p>
+<hr>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p><a href="https://github.com/microsoft/playwright/blob/v0.10.0/README.md#q-how-does-playwright-relate-to-puppeteer">https://github.com/microsoft/playwright/blob/v0.10.0/README.md#q-how-does-playwright-relate-to-puppeteer</a> <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:2" role="doc-endnote">
+<p><a href="https://github.com/microsoft/playwright/blob/v0.10.0/src/deviceDescriptors.ts">https://github.com/microsoft/playwright/blob/v0.10.0/src/deviceDescriptors.ts</a> <a href="#fnref:2" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:3" role="doc-endnote">
+<p><a href="https://github.com/puppeteer/puppeteer/blob/v2.1.0/lib/DeviceDescriptors.js">https://github.com/puppeteer/puppeteer/blob/v2.1.0/lib/DeviceDescriptors.js</a> <a href="#fnref:3" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:4" role="doc-endnote">
+<p><a href="https://www.w3.org/TR/webdriver/#cookies">https://www.w3.org/TR/webdriver/#cookies</a> <a href="#fnref:4" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+<li id="fn:5" role="doc-endnote">
+<p><a href="https://chromedriver.chromium.org/mobile-emulation">https://chromedriver.chromium.org/mobile-emulation</a> <a href="#fnref:5" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>CC BY-SA 4.0</p>
+      
+      
+        ©
+        
+          2018 -
+        
+        2020
+         takeya0x86 
+      
+      
+         · 
+        利用技術 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+
+  </body>
+
+</html>

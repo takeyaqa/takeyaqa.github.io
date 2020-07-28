@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="ja">
+
+    <meta name="author" content="takeya0x86">
+    <meta name="description" content="この記事は Selenium/Appium Advent Calendar 2018 の5日目の記事です。
+この記事ではSelenium Gridの拡張であるZaleniumのダッシュボードについて、ちょっと便利な使い方を解説します。">
+    <meta name="keywords" content="blog,developer,personal,Selenium,Appium">
+
+    
+
+    <meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://takeya0x86.github.io/images/2018/12/05/01_zalenium-dashboard.png"/>
+
+<meta name="twitter:title" content="Zaleniumのダッシュボードを便利に使う"/>
+<meta name="twitter:description" content="この記事は Selenium/Appium Advent Calendar 2018 の5日目の記事です。
+この記事ではSelenium Gridの拡張であるZaleniumのダッシュボードについて、ちょっと便利な使い方を解説します。"/>
+
+    <meta property="og:title" content="Zaleniumのダッシュボードを便利に使う" />
+<meta property="og:description" content="この記事は Selenium/Appium Advent Calendar 2018 の5日目の記事です。
+この記事ではSelenium Gridの拡張であるZaleniumのダッシュボードについて、ちょっと便利な使い方を解説します。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://takeya0x86.github.io/2018/12/05/zalenium-dashboard/" />
+<meta property="og:image" content="https://takeya0x86.github.io/images/2018/12/05/01_zalenium-dashboard.png" />
+<meta property="article:published_time" content="2018-12-05T09:00:00+09:00" />
+<meta property="article:modified_time" content="2018-12-05T09:00:00+09:00" />
+
+
+    
+      <base href="https://takeya0x86.github.io/2018/12/05/zalenium-dashboard/">
+    
+    <title>
+  Zaleniumのダッシュボードを便利に使う · takeya&#39;s blog
+</title>
+
+    
+      <link rel="canonical" href="https://takeya0x86.github.io/2018/12/05/zalenium-dashboard/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.74.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      takeya&#39;s blog
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://takeya0x86.github.io/posts/">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Zaleniumのダッシュボードを便利に使う</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2018-12-05T09:00:00&#43;09:00'>
+                2018年12月5日
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3分で読めます
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="/tags/selenium/">Selenium</a>
+      <span class="separator">•</span>
+    <a href="/tags/zalenium/">Zalenium</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88/">テスト</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96/">テスト自動化</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p>この記事は <a href="https://qiita.com/advent-calendar/2018/selenium_and_appium">Selenium/Appium Advent Calendar 2018</a> の5日目の記事です。</p>
+<p>この記事ではSelenium Gridの拡張であるZaleniumのダッシュボードについて、ちょっと便利な使い方を解説します。</p>
+<p>Zaleniumについての解説はここでは行いません。<a href="https://opensource.zalando.com/zalenium/">本家のサイト</a>か、CodeZineの記事<a href="https://codezine.jp/article/detail/10471">DockerでSelenium Gridを構築して複数マシンのブラウザ自動テストを行う</a>をご覧ください。</p>
+<h2 id="zaleniumのダッシュボード">Zaleniumのダッシュボード</h2>
+<p><img src="/images/2018/12/05/01_zalenium-dashboard.png" alt="zalenium-dashboard"></p>
+<p>ダッシュボードは上のようなレイアウトになっています。左側に実行したテストがリスト形式で表示され、それを選択すると右側のエリアに実行時間や環境などの詳細情報と録画した実行中画面が表示されます。</p>
+<p>この時、リストに表示されているテストの名称は未設定の場合「63684425-a7e9&hellip;」の様なランダムな文字列になります。このままではテストを探すときに不便です。検索しやすいようにテスト名を設定しましょう。</p>
+<h2 id="テスト名を指定する">テスト名を指定する</h2>
+<p>WebDriverを初期する際のcapabilityに<code>zal:name</code>という名前で値を設定すると、この値がダッシュボードにテスト名として表示されます。
+Javaでのコード例は以下のとおりです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ChromeOptions options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChromeOptions<span style="color:#f92672">();</span>
+options<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;zal:name&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;STAR-HOTEL-E2ETest&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><h2 id="ビルド名を指定する">ビルド名を指定する</h2>
+<p>同様に<code>zal:build</code>でビルド名が設定できます。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ChromeOptions options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChromeOptions<span style="color:#f92672">();</span>
+options<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;zal:build&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;#1&#34;</span><span style="color:#f92672">);</span>
+</code></pre></div><p>まとめると以下のようなコードになります。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">ChromeOptions options <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> ChromeOptions<span style="color:#f92672">();</span>
+options<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;zal:name&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;STAR-HOTEL-E2ETest&#34;</span><span style="color:#f92672">);</span>
+options<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;zal:build&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;#1&#34;</span><span style="color:#f92672">);</span>
+WebDriver driver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> RemoteWebDriver<span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> URL<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;http://localhost:4444/wd/hub&#34;</span><span style="color:#f92672">),</span> options<span style="color:#f92672">);</span>
+</code></pre></div><h2 id="何を設定するのが良い">何を設定するのが良い？</h2>
+<p>テストをJenkinsで実行している場合は、Jenkinsのジョブ名とビルド番号を渡すと関連付けができて扱いやすくなると思います。
+一つのプロジェクトの中に複数のテストがある場合は、ビルド名を統一してテスト名をつけると後述の絞り込みがやりやすくなります。</p>
+<h2 id="絞り込み">絞り込み</h2>
+<p>ダッシュボードの「Search」欄へのキーワード入力でリストをフィルタできます。キーワードはスペースで区切って複数入力することでAND検索として扱われます。</p>
+<p>また、<code>http://localhost:4444/dashboard/?q=STAR-HOTEL-E2ETest</code>のようにパラメータ<code>q</code>の後にキーワードを指定するとリンクでフィルタを使うことができます。Jenkinsのジョブ画面にリンクを貼ったりするときに便利です。こちらのキーワードも<code>+</code>で結合することで複数指定できます<sup id="fnref:1"><a href="#fn:1" class="footnote-ref" role="doc-noteref">1</a></sup>。ビルドのエラー通知などに載せる場合はすぐにたどれるようにピンポイントでフィルタする方が良いでしょう。</p>
+<h2 id="最後に">最後に</h2>
+<p>ダッシュボードは基本的な機能ですが、Zaleniumは日本語の記事がほとんど無いため書いてみました。参考になりましたでしょうか？</p>
+<p>次回は……きっと誰かが書いてくれるはず……</p>
+<hr>
+<section class="footnotes" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn:1" role="doc-endnote">
+<p>アルファベットと一部の記号以外はURLエンコードが必要です。 <a href="#fnref:1" class="footnote-backref" role="doc-backlink">&#x21a9;&#xfe0e;</a></p>
+</li>
+</ol>
+</section>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>CC BY-SA 4.0</p>
+      
+      
+        ©
+        
+          2018 -
+        
+        2020
+         takeya0x86 
+      
+      
+         · 
+        利用技術 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+
+  </body>
+
+</html>

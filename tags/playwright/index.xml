@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Playwright on takeya&#39;s blog</title>
+    <link>https://takeya0x86.github.io/tags/playwright/</link>
+    <description>Recent content in Playwright on takeya&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>Creative Commons Attribution-ShareAlike 4.0 International</copyright>
+    <lastBuildDate>Fri, 07 Feb 2020 09:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://takeya0x86.github.io/tags/playwright/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Playwrightファーストインプレッション</title>
+      <link>https://takeya0x86.github.io/2020/02/07/playwright-first-impression/</link>
+      <pubDate>Fri, 07 Feb 2020 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/2020/02/07/playwright-first-impression/</guid>
+      <description>&lt;h2 id=&#34;playwrightとは&#34;&gt;Playwrightとは&lt;/h2&gt;
+&lt;p&gt;2020年の1月末頃から話題になっているNode.js向けのブラウザ自動化ライブラリです。GithubのMicrosoftリポジトリで公開されています。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/Microsoft/playwright&#34;&gt;https://github.com/Microsoft/playwright&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;READMEの記述&lt;sup id=&#34;fnref:1&#34;&gt;&lt;a href=&#34;#fn:1&#34; class=&#34;footnote-ref&#34; role=&#34;doc-noteref&#34;&gt;1&lt;/a&gt;&lt;/sup&gt;によると、GoogleでPuppeteerを開発していたチームがその後移って来て開発を開始したそうです。
+Puppeteerとの差異としてよりtesting-friendlyなAPIを目指すこと、ChromeだけでなくFirefox、Webkitにも単一のAPIで対応すること、そのために互換性を持たない変更が必要になったためPuppeteerからコードベースを作り直しているたことなどが表明されています。&lt;/p&gt;
+&lt;p&gt;この記事ではPlaywrightをさわってみた所感をPuppeteerやWebDriverと比較をしながら書いていこうと思います。&lt;/p&gt;
+&lt;p&gt;Playwrightのバージョンは執筆時で最新の&lt;code&gt;v0.10.0&lt;/code&gt;、Puppeteerは同じく最新の&lt;code&gt;v2.1.0&lt;/code&gt;です。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

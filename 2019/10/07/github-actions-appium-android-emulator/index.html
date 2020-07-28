@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Language" content="ja">
+
+    <meta name="author" content="takeya0x86">
+    <meta name="description" content="前回の記事でGithub Actionsの環境でiOS Simulatorを動かす方法を書きました。今回はAndroid Emulatorを動かしてみたいと思います。">
+    <meta name="keywords" content="blog,developer,personal,Selenium,Appium">
+
+    
+
+    <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Github Actions&#43;AppiumでAndroid Emulatorを動かす"/>
+<meta name="twitter:description" content="前回の記事でGithub Actionsの環境でiOS Simulatorを動かす方法を書きました。今回はAndroid Emulatorを動かしてみたいと思います。"/>
+
+    <meta property="og:title" content="Github Actions&#43;AppiumでAndroid Emulatorを動かす" />
+<meta property="og:description" content="前回の記事でGithub Actionsの環境でiOS Simulatorを動かす方法を書きました。今回はAndroid Emulatorを動かしてみたいと思います。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://takeya0x86.github.io/2019/10/07/github-actions-appium-android-emulator/" />
+<meta property="article:published_time" content="2019-10-07T09:00:00+09:00" />
+<meta property="article:modified_time" content="2019-10-07T09:00:00+09:00" />
+
+
+    
+      <base href="https://takeya0x86.github.io/2019/10/07/github-actions-appium-android-emulator/">
+    
+    <title>
+  Github Actions&#43;AppiumでAndroid Emulatorを動かす · takeya&#39;s blog
+</title>
+
+    
+      <link rel="canonical" href="https://takeya0x86.github.io/2019/10/07/github-actions-appium-android-emulator/">
+    
+
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700%7CMerriweather:300,700%7CSource+Code+Pro:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha256-l85OmPOjvil/SOvVt3HnSSjzF1TUMyT9eV0c2BzEGzU=" crossorigin="anonymous" />
+
+    
+      
+      
+      <link rel="stylesheet" href="/css/coder.min.3219ef62ae52679b7a9c19043171c3cd9f523628c2a65f3ef247ee18836bc90b.css" integrity="sha256-MhnvYq5SZ5t6nBkEMXHDzZ9SNijCpl8&#43;8kfuGINryQs=" crossorigin="anonymous" media="screen" />
+    
+
+    
+
+    
+      
+        
+        
+        <link rel="stylesheet" href="/css/coder-dark.min.e78e80fc3a585a4d1c8fc7f58623b6ff852411e38431a9cd1792877ecaa160f6.css" integrity="sha256-546A/DpYWk0cj8f1hiO2/4UkEeOEManNF5KHfsqhYPY=" crossorigin="anonymous" media="screen" />
+      
+    
+
+    
+
+    
+
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="https://takeya0x86.github.io/images/favicon-16x16.png" sizes="16x16">
+
+    <meta name="generator" content="Hugo 0.74.3" />
+  </head>
+
+  
+  
+    
+  
+  <body class="colorscheme-auto"
+        onload=""
+  >
+    <main class="wrapper">
+      <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      takeya&#39;s blog
+    </a>
+    
+    <input type="checkbox" id="menu-toggle" />
+    <label class="menu-button float-right" for="menu-toggle"><i class="fas fa-bars"></i></label>
+    <ul class="navigation-list">
+      
+        
+          <li class="navigation-item">
+            <a class="navigation-link" href="https://takeya0x86.github.io/posts/">Blog</a>
+          </li>
+        
+      
+      
+    </ul>
+    
+  </section>
+</nav>
+
+
+      <div class="content">
+        
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">Github Actions&#43;AppiumでAndroid Emulatorを動かす</h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fas fa-calendar"></i>
+              <time datetime='2019-10-07T09:00:00&#43;09:00'>
+                2019年10月7日
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fas fa-clock"></i>
+              3分で読めます
+            </span>
+          </div>
+          
+          <div class="tags">
+  <i class="fas fa-tag"></i>
+    <a href="/tags/selenium/">Selenium</a>
+      <span class="separator">•</span>
+    <a href="/tags/android/">Android</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88/">テスト</a>
+      <span class="separator">•</span>
+    <a href="/tags/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96/">テスト自動化</a>
+      <span class="separator">•</span>
+    <a href="/tags/appium/">Appium</a>
+      <span class="separator">•</span>
+    <a href="/tags/githubactions/">GitHubActions</a></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <p><a href="/2019/09/25/github-actions-appium-iphone-simulator/">前回の記事</a>でGithub Actionsの環境でiOS Simulatorを動かす方法を書きました。今回はAndroid Emulatorを動かしてみたいと思います。</p>
+<h2 id="ワークフロー定義">ワークフロー定義</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml"><span style="color:#66d9ef">name</span>: Android Emulator Test
+
+<span style="color:#66d9ef">on</span>: [push, pull_request]
+
+<span style="color:#66d9ef">jobs</span>:
+  <span style="color:#66d9ef">build</span>:
+    <span style="color:#66d9ef">name</span>: Mobile Chrome Test
+    <span style="color:#66d9ef">runs-on</span>: macOS<span style="color:#ae81ff">-10.14</span>
+    <span style="color:#66d9ef">steps</span>:
+      - <span style="color:#66d9ef">name</span>: Checkout source code
+        <span style="color:#66d9ef">uses</span>: actions/checkout@v1
+      - <span style="color:#66d9ef">name</span>: Set up Node.js
+        <span style="color:#66d9ef">uses</span>: actions/setup-node@v1
+        <span style="color:#66d9ef">with</span>:
+          <span style="color:#66d9ef">node-version</span>: <span style="color:#e6db74">&#39;10.16.3&#39;</span>
+      - <span style="color:#66d9ef">name</span>: Run Android Emulator
+        <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">          echo &#34;y&#34; | $ANDROID_HOME/tools/bin/sdkmanager --install &#39;system-images;android-27;google_apis;x86&#39;</span>
+          echo <span style="color:#e6db74">&#34;no&#34;</span> | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k <span style="color:#e6db74">&#39;system-images;android-27;google_apis;x86&#39;</span> --force
+          echo $ANDROID_HOME/emulator/emulator -list-avds
+          echo <span style="color:#e6db74">&#34;Starting emulator&#34;</span>
+          nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot &gt; /dev/<span style="color:#66d9ef">null</span> <span style="color:#ae81ff">2</span>&gt;<span style="color:#75715e">&amp;1</span> &amp;
+          $ANDROID_HOME/platform-tools/adb wait-for-device shell <span style="color:#e6db74">&#39;while [[ -z $(getprop sys.boot_completed | tr -d &#39;</span>\r<span style="color:#e6db74">&#39;) ]]; do sleep 1; done; input keyevent 82&#39;</span>
+          $ANDROID_HOME/platform-tools/adb devices
+          echo <span style="color:#e6db74">&#34;Emulator started&#34;</span>
+      - <span style="color:#66d9ef">name</span>: Set up Appium
+        <span style="color:#66d9ef">run</span>: npm install appium@<span style="color:#ae81ff">1.15.0</span>
+      - <span style="color:#66d9ef">name</span>: Run Appium Server
+        <span style="color:#66d9ef">run</span>: ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload &gt; appium.log &amp;
+      - <span style="color:#66d9ef">name</span>: Build with Gradle
+        <span style="color:#66d9ef">run</span>: gradle cleanTest test --tests <span style="color:#e6db74">&#34;com.example.chrome.MobileChromeTest&#34;</span>
+        <span style="color:#66d9ef">continue-on-error</span>: <span style="color:#66d9ef">true</span>
+      - <span style="color:#66d9ef">name</span>: Upload logs
+        <span style="color:#66d9ef">uses</span>: actions/upload-artifact@v1
+        <span style="color:#66d9ef">with</span>:
+          <span style="color:#66d9ef">name</span>: appium.log
+          <span style="color:#66d9ef">path</span>: appium.log
+      - <span style="color:#66d9ef">name</span>: Upload screenshots
+        <span style="color:#66d9ef">uses</span>: actions/upload-artifact@v1
+        <span style="color:#66d9ef">with</span>:
+          <span style="color:#66d9ef">name</span>: screenshots
+          <span style="color:#66d9ef">path</span>: screenshots
+</code></pre></div><p>順に解説していきます。</p>
+<h3 id="コードのチェックアウトとnodejsのセットアップ">コードのチェックアウトとNode.jsのセットアップ</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">name</span>: Checkout source code
+  <span style="color:#66d9ef">uses</span>: actions/checkout@v1
+- <span style="color:#66d9ef">name</span>: Set up Node.js
+  <span style="color:#66d9ef">uses</span>: actions/setup-node@v1
+  <span style="color:#66d9ef">with</span>:
+    <span style="color:#66d9ef">node-version</span>: <span style="color:#e6db74">&#39;10.16.3&#39;</span>
+</code></pre></div><p>表題の通りです。どちらもactionsを活用しています。</p>
+<h3 id="android-emulatorのインストールと起動">Android Emulatorのインストールと起動</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">
+- <span style="color:#66d9ef">name</span>: Run Android Emulator
+  <span style="color:#66d9ef">run</span>: <span style="color:#e6db74">|
+</span><span style="color:#e6db74">    echo &#34;y&#34; | $ANDROID_HOME/tools/bin/sdkmanager --install &#39;system-images;android-27;google_apis;x86&#39;</span>
+    echo <span style="color:#e6db74">&#34;no&#34;</span> | $ANDROID_HOME/tools/bin/avdmanager create avd -n xamarin_android_emulator -k <span style="color:#e6db74">&#39;system-images;android-27;google_apis;x86&#39;</span> --force
+    echo $ANDROID_HOME/emulator/emulator -list-avds
+    echo <span style="color:#e6db74">&#34;Starting emulator&#34;</span>
+    nohup $ANDROID_HOME/emulator/emulator -avd xamarin_android_emulator -no-snapshot &gt; /dev/<span style="color:#66d9ef">null</span> <span style="color:#ae81ff">2</span>&gt;<span style="color:#75715e">&amp;1</span> &amp;
+    $ANDROID_HOME/platform-tools/adb wait-for-device shell <span style="color:#e6db74">&#39;while [[ -z $(getprop sys.boot_completed | tr -d &#39;</span>\r<span style="color:#e6db74">&#39;) ]]; do sleep 1; done; input keyevent 82&#39;</span>
+    $ANDROID_HOME/platform-tools/adb devices
+    echo <span style="color:#e6db74">&#34;Emulator started&#34;</span>
+</code></pre></div><p>ここのコードは <a href="https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/android?view=azure-devops#test-on-the-android-emulator">Azure DevOpsのヘルプドキュメント</a>から拝借しています。</p>
+<p>内容としてはsystem-imagesをダウンロードするところから始まり、AVDの作成、起動となっています。毎回ダウンロードが走る事に関してはビルドキャッシュが導入されるまでは我慢するしかないですね……</p>
+<h3 id="appiumのインストールと起動">Appiumのインストールと起動</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">name</span>: Set up Appium
+  <span style="color:#66d9ef">run</span>: npm install appium@<span style="color:#ae81ff">1.15.0</span>
+- <span style="color:#66d9ef">name</span>: Run Appium Server
+  <span style="color:#66d9ef">run</span>: ./node_modules/.bin/appium --log-timestamp --log-no-colors --allow-insecure chromedriver_autodownload &gt; appium.log &amp;
+</code></pre></div><p>NPMでAppiumをインストールした後に起動しています。起動時にログが見やすくなるようにオプションを設定しているほか、ChromeDriverの自動ダウンロードを有効にしています。これはEmulatorのChromeのバージョンとAppiumにバンドルされているChromeDriverのバージョンが一致していないため必要になります。</p>
+<h3 id="テストの実行">テストの実行</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">name</span>: Build with Gradle
+  <span style="color:#66d9ef">run</span>: gradle cleanTest test --tests <span style="color:#e6db74">&#34;com.example.chrome.MobileChromeTest&#34;</span>
+  <span style="color:#66d9ef">continue-on-error</span>: <span style="color:#66d9ef">true</span>
+</code></pre></div><p>GradleでJavaのテストを実行します。<code>continue-on-error</code> を有効にしているのは、このステップで失敗するとワークフローの実行が中断され、この後のAppiumログのアップロードが実行されないからです。</p>
+<p>Javaのテストコードは以下の通りです。</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">MobileChromeTest</span> <span style="color:#f92672">{</span>
+  <span style="color:#66d9ef">private</span> AndroidDriver<span style="color:#f92672">&lt;</span>WebElement<span style="color:#f92672">&gt;</span> driver<span style="color:#f92672">;</span>
+
+  <span style="color:#a6e22e">@BeforeEach</span>
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">before</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    DesiredCapabilities caps <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> DesiredCapabilities<span style="color:#f92672">();</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setBrowserName</span><span style="color:#f92672">(</span>BrowserType<span style="color:#f92672">.</span><span style="color:#a6e22e">CHROME</span><span style="color:#f92672">);</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span>MobileCapabilityType<span style="color:#f92672">.</span><span style="color:#a6e22e">AUTOMATION_NAME</span><span style="color:#f92672">,</span> AutomationName<span style="color:#f92672">.</span><span style="color:#a6e22e">ANDROID_UIAUTOMATOR2</span><span style="color:#f92672">);</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span>MobileCapabilityType<span style="color:#f92672">.</span><span style="color:#a6e22e">DEVICE_NAME</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Android Emulator&#34;</span><span style="color:#f92672">);</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span>MobileCapabilityType<span style="color:#f92672">.</span><span style="color:#a6e22e">LANGUAGE</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;ja&#34;</span><span style="color:#f92672">);</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span>MobileCapabilityType<span style="color:#f92672">.</span><span style="color:#a6e22e">LOCALE</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;JP&#34;</span><span style="color:#f92672">);</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span>AndroidMobileCapabilityType<span style="color:#f92672">.</span><span style="color:#a6e22e">NATIVE_WEB_SCREENSHOT</span><span style="color:#f92672">,</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;adbExecTimeout&#34;</span><span style="color:#f92672">,</span> 60000<span style="color:#f92672">);</span>
+    caps<span style="color:#f92672">.</span><span style="color:#a6e22e">setCapability</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;uiautomator2ServerInstallTimeout&#34;</span><span style="color:#f92672">,</span> 60000<span style="color:#f92672">);</span>
+    <span style="color:#66d9ef">try</span> <span style="color:#f92672">{</span>
+      driver <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> AndroidDriver<span style="color:#f92672">&lt;&gt;(</span><span style="color:#66d9ef">new</span> URL<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;http://0.0.0.0:4723/wd/hub&#34;</span><span style="color:#f92672">),</span> caps<span style="color:#f92672">);</span>
+    <span style="color:#f92672">}</span> <span style="color:#66d9ef">catch</span> <span style="color:#f92672">(</span>MalformedURLException ign<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      <span style="color:#75715e">// ignore
+</span><span style="color:#75715e"></span>    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#a6e22e">@AfterEach</span>
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">after</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>driver <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+      driver<span style="color:#f92672">.</span><span style="color:#a6e22e">quit</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">}</span>
+  <span style="color:#f92672">}</span>
+
+  <span style="color:#a6e22e">@Test</span>
+  <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">testGet</span><span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
+    driver<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://qiita.com/&#34;</span><span style="color:#f92672">);</span>
+    assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Qiita&#34;</span><span style="color:#f92672">,</span> driver<span style="color:#f92672">.</span><span style="color:#a6e22e">getTitle</span><span style="color:#f92672">());</span>
+    screenshot<span style="color:#f92672">();</span>
+
+    driver<span style="color:#f92672">.</span><span style="color:#a6e22e">get</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://qiita.com/search&#34;</span><span style="color:#f92672">);</span>
+    driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;q&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">sendKeys</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Selenium&#34;</span><span style="color:#f92672">);</span>
+    screenshot<span style="color:#f92672">();</span>
+    driver<span style="color:#f92672">.</span><span style="color:#a6e22e">findElement</span><span style="color:#f92672">(</span>By<span style="color:#f92672">.</span><span style="color:#a6e22e">className</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;searchResultContainer_searchButton&#34;</span><span style="color:#f92672">)).</span><span style="color:#a6e22e">click</span><span style="color:#f92672">();</span>
+    <span style="color:#f92672">(</span><span style="color:#66d9ef">new</span> WebDriverWait<span style="color:#f92672">(</span>driver<span style="color:#f92672">,</span> 10<span style="color:#f92672">)).</span><span style="color:#a6e22e">until</span><span style="color:#f92672">(</span>ExpectedConditions<span style="color:#f92672">.</span><span style="color:#a6e22e">titleContains</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Selenium&#34;</span><span style="color:#f92672">));</span>
+    assertEquals<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;「Selenium」の検索結果 - Qiita&#34;</span><span style="color:#f92672">,</span> driver<span style="color:#f92672">.</span><span style="color:#a6e22e">getTitle</span><span style="color:#f92672">());</span>
+    screenshot<span style="color:#f92672">();</span>
+  <span style="color:#f92672">}</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>Emulatorの動作が遅いのでタイムアウト系の設定を長めに変更しています。テスト本体部分はQiitaの検索ページで検索をしているだけですね。</p>
+<h3 id="ログとスクリーンショットのアップロード">ログとスクリーンショットのアップロード</h3>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-yaml" data-lang="yaml">- <span style="color:#66d9ef">name</span>: Upload logs
+  <span style="color:#66d9ef">uses</span>: actions/upload-artifact@v1
+  <span style="color:#66d9ef">with</span>:
+    <span style="color:#66d9ef">name</span>: appium.log
+    <span style="color:#66d9ef">path</span>: appium.log
+- <span style="color:#66d9ef">name</span>: Upload screenshots
+  <span style="color:#66d9ef">uses</span>: actions/upload-artifact@v1
+  <span style="color:#66d9ef">with</span>:
+    <span style="color:#66d9ef">name</span>: screenshots
+    <span style="color:#66d9ef">path</span>: screenshots
+</code></pre></div><p>actionsを使ってログファイルとスクリーンショットのファイルをアップロードしています。</p>
+<h2 id="まとめ">まとめ</h2>
+<p>動作した結果がこちらです。 <a href="https://github.com/takeya0x86/spike-github-actions/runs/249721165">https://github.com/takeya0x86/spike-github-actions/runs/249721165</a></p>
+<p>キャッシュがうまく効くようになれば運用しやすくなるかなと思います。このあたりはGA待って再度試すのが良さそうですね。</p>
+<p>Android Emulatorに関してはアプリのテストも実行可能です。iOS SimulatorはSimulator向けビルドなら動作するという感じですね。</p>
+<p>Selenium、AppiumもGithub Actionsでも動作させる事はできるので、今後はこれを活用したワークフローをどう作っていくかを考えていきたいと思います。</p>
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+      </div>
+
+      
+  <footer class="footer">
+    <section class="container">
+      
+        <p>CC BY-SA 4.0</p>
+      
+      
+        ©
+        
+          2018 -
+        
+        2020
+         takeya0x86 
+      
+      
+         · 
+        利用技術 <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+      
+      
+    </section>
+  </footer>
+
+    </main>
+
+    
+
+    
+
+    
+
+  </body>
+
+</html>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iOS on takeya&#39;s blog</title>
+    <link>https://takeya0x86.github.io/tags/ios/</link>
+    <description>Recent content in iOS on takeya&#39;s blog</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja</language>
+    <copyright>Creative Commons Attribution-ShareAlike 4.0 International</copyright>
+    <lastBuildDate>Wed, 25 Sep 2019 09:00:00 +0900</lastBuildDate>
+    
+	<atom:link href="https://takeya0x86.github.io/tags/ios/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Github Actions&#43;AppiumでiPhone Simulatorを動かす</title>
+      <link>https://takeya0x86.github.io/2019/09/25/github-actions-appium-iphone-simulator/</link>
+      <pubDate>Wed, 25 Sep 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/2019/09/25/github-actions-appium-iphone-simulator/</guid>
+      <description>&lt;p&gt;Github Actionsの環境にAppiumをインストールをしてiPhone Simulator上のSafariでブラウザの自動テストを実行する方法を共有します。&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>
