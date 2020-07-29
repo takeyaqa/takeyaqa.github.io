@@ -13,6 +13,24 @@
     
     
     <item>
+      <title>automation</title>
+      <link>https://takeya0x86.github.io/tags/automation/</link>
+      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/automation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>beginners</title>
+      <link>https://takeya0x86.github.io/tags/beginners/</link>
+      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/beginners/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Selenium</title>
       <link>https://takeya0x86.github.io/tags/selenium/</link>
       <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
@@ -22,29 +40,20 @@
     </item>
     
     <item>
-      <title>webdriverio</title>
+      <title>testing</title>
+      <link>https://takeya0x86.github.io/tags/testing/</link>
+      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/testing/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WebdriverIO</title>
       <link>https://takeya0x86.github.io/tags/webdriverio/</link>
       <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
       
       <guid>https://takeya0x86.github.io/tags/webdriverio/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>テスト</title>
-      <link>https://takeya0x86.github.io/tags/%E3%83%86%E3%82%B9%E3%83%88/</link>
-      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
-      
-      <guid>https://takeya0x86.github.io/tags/%E3%83%86%E3%82%B9%E3%83%88/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>テスト自動化</title>
-      <link>https://takeya0x86.github.io/tags/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96/</link>
-      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
-      
-      <guid>https://takeya0x86.github.io/tags/%E3%83%86%E3%82%B9%E3%83%88%E8%87%AA%E5%8B%95%E5%8C%96/</guid>
       <description></description>
     </item>
     
@@ -58,7 +67,7 @@
     </item>
     
     <item>
-      <title>puppeteer</title>
+      <title>Puppeteer</title>
       <link>https://takeya0x86.github.io/tags/puppeteer/</link>
       <pubDate>Fri, 07 Feb 2020 09:00:00 +0900</pubDate>
       
@@ -67,11 +76,38 @@
     </item>
     
     <item>
-      <title>SeleniumIDE</title>
-      <link>https://takeya0x86.github.io/tags/seleniumide/</link>
+      <title>Advent Calendar</title>
+      <link>https://takeya0x86.github.io/tags/advent-calendar/</link>
+      <pubDate>Sat, 28 Dec 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/advent-calendar/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Google Chrome</title>
+      <link>https://takeya0x86.github.io/tags/google-chrome/</link>
+      <pubDate>Sat, 28 Dec 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/google-chrome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selenium4</title>
+      <link>https://takeya0x86.github.io/tags/selenium4/</link>
+      <pubDate>Sat, 28 Dec 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/selenium4/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selenium IDE</title>
+      <link>https://takeya0x86.github.io/tags/selenium-ide/</link>
       <pubDate>Mon, 23 Dec 2019 09:00:00 +0900</pubDate>
       
-      <guid>https://takeya0x86.github.io/tags/seleniumide/</guid>
+      <guid>https://takeya0x86.github.io/tags/selenium-ide/</guid>
       <description></description>
     </item>
     
@@ -94,11 +130,20 @@
     </item>
     
     <item>
-      <title>GitHubActions</title>
-      <link>https://takeya0x86.github.io/tags/githubactions/</link>
+      <title>CI</title>
+      <link>https://takeya0x86.github.io/tags/ci/</link>
       <pubDate>Mon, 07 Oct 2019 09:00:00 +0900</pubDate>
       
-      <guid>https://takeya0x86.github.io/tags/githubactions/</guid>
+      <guid>https://takeya0x86.github.io/tags/ci/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitHub Actions</title>
+      <link>https://takeya0x86.github.io/tags/github-actions/</link>
+      <pubDate>Mon, 07 Oct 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/github-actions/</guid>
       <description></description>
     </item>
     
@@ -112,6 +157,15 @@
     </item>
     
     <item>
+      <title>BrowserMob Proxy</title>
+      <link>https://takeya0x86.github.io/tags/browsermob-proxy/</link>
+      <pubDate>Tue, 16 Jul 2019 09:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/browsermob-proxy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Firefox</title>
       <link>https://takeya0x86.github.io/tags/firefox/</link>
       <pubDate>Mon, 08 Jul 2019 09:00:00 +0900</pubDate>
@@ -121,11 +175,11 @@
     </item>
     
     <item>
-      <title>Chrome</title>
-      <link>https://takeya0x86.github.io/tags/chrome/</link>
-      <pubDate>Thu, 27 Jun 2019 09:00:00 +0900</pubDate>
+      <title>screenshot</title>
+      <link>https://takeya0x86.github.io/tags/screenshot/</link>
+      <pubDate>Mon, 08 Jul 2019 09:00:00 +0900</pubDate>
       
-      <guid>https://takeya0x86.github.io/tags/chrome/</guid>
+      <guid>https://takeya0x86.github.io/tags/screenshot/</guid>
       <description></description>
     </item>
     
