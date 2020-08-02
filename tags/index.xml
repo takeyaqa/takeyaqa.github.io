@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja</language>
     <copyright>Creative Commons Attribution-ShareAlike 4.0 International</copyright>
-    <lastBuildDate>Wed, 15 Apr 2020 09:00:00 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 02 Aug 2020 23:00:00 +0900</lastBuildDate>
     
 	<atom:link href="https://takeya0x86.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>automation</title>
       <link>https://takeya0x86.github.io/tags/automation/</link>
-      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      <pubDate>Sun, 02 Aug 2020 23:00:00 +0900</pubDate>
       
       <guid>https://takeya0x86.github.io/tags/automation/</guid>
       <description></description>
@@ -24,16 +24,34 @@
     <item>
       <title>beginners</title>
       <link>https://takeya0x86.github.io/tags/beginners/</link>
-      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      <pubDate>Sun, 02 Aug 2020 23:00:00 +0900</pubDate>
       
       <guid>https://takeya0x86.github.io/tags/beginners/</guid>
       <description></description>
     </item>
     
     <item>
+      <title>Capybara</title>
+      <link>https://takeya0x86.github.io/tags/capybara/</link>
+      <pubDate>Sun, 02 Aug 2020 23:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/capybara/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Selenide</title>
+      <link>https://takeya0x86.github.io/tags/selenide/</link>
+      <pubDate>Sun, 02 Aug 2020 23:00:00 +0900</pubDate>
+      
+      <guid>https://takeya0x86.github.io/tags/selenide/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Selenium</title>
       <link>https://takeya0x86.github.io/tags/selenium/</link>
-      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      <pubDate>Sun, 02 Aug 2020 23:00:00 +0900</pubDate>
       
       <guid>https://takeya0x86.github.io/tags/selenium/</guid>
       <description></description>
@@ -42,7 +60,7 @@
     <item>
       <title>testing</title>
       <link>https://takeya0x86.github.io/tags/testing/</link>
-      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      <pubDate>Sun, 02 Aug 2020 23:00:00 +0900</pubDate>
       
       <guid>https://takeya0x86.github.io/tags/testing/</guid>
       <description></description>
@@ -51,7 +69,7 @@
     <item>
       <title>WebdriverIO</title>
       <link>https://takeya0x86.github.io/tags/webdriverio/</link>
-      <pubDate>Wed, 15 Apr 2020 09:00:00 +0900</pubDate>
+      <pubDate>Sun, 02 Aug 2020 23:00:00 +0900</pubDate>
       
       <guid>https://takeya0x86.github.io/tags/webdriverio/</guid>
       <description></description>
