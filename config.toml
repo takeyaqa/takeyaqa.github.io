@@ -1,0 +1,66 @@
+baseURL = "https://takeya0x86.github.io/"
+title = "takeya's blog"
+
+theme = "hugo-coder"
+
+languagecode = "ja"
+defaultcontentlanguage = "ja"
+
+copyright = "Creative Commons Attribution-ShareAlike 4.0 International"
+hasCJKLanguage = true
+
+googleAnalytics = "UA-162084685-1"
+
+[permalinks]
+    posts = "/:year/:month/:day/:slug/"
+
+[params]
+    author = "takeya0x86"
+    description = "writing about tests and automations."
+    keywords = "blog,developer,personal,Selenium,Appium"
+    info = "QA Engineer."
+    avatarurl = "/images/avatar.jpg"
+    footercontent = "CC BY-SA 4.0"
+
+    dateformat = "2006年1月2日"
+
+    hideFooter = false
+    hideCredits = false
+    hideCopyright = false
+    since = 2018
+
+    rtl = false
+
+    # Specify light/dark colorscheme
+    # Supported values:
+    # "auto" (use preference set by browser)
+    # "dark" (dark background, light foreground)
+    # "light" (light background, dark foreground) (default)
+    colorscheme = "auto"
+
+[[params.social]]
+    name = "Github"
+    icon = "fab fa-github"
+    weight = 1
+    url = "https://github.com/takeya0x86"
+[[params.social]]
+    name = "Twitter"
+    icon = "fab fa-twitter"
+    weight = 2
+    url = "https://twitter.com/takeya0x86"
+[[params.social]]
+    name = "RSS"
+    icon = "fas fa-rss"
+    weight = 3
+    url = "./index.xml"
+    rel = "alternate"
+    type = "application/rss+xml"
+
+[[menu.main]]
+    name = "Blog"
+    weight = 1
+    url  = "posts/"
+[[menu.main]]
+    name = "Tags"
+    weight = 2
+    url  = "tags/"
