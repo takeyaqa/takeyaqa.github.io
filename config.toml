@@ -9,8 +9,6 @@ defaultcontentlanguage = "ja"
 copyright = "Creative Commons Attribution-ShareAlike 4.0 International"
 hasCJKLanguage = true
 
-googleAnalytics = "UA-162084685-1"
-
 [permalinks]
     posts = "/:year/:month/:day/:slug/"
 
