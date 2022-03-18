@@ -36,6 +36,9 @@ hasCJKLanguage = true
     # "light" (light background, dark foreground) (default)
     colorscheme = "auto"
 
+[params.plausibleAnalytics]
+  domain = "takeya0x86.github.io"
+
 [[params.social]]
     name = "Github"
     icon = "fab fa-github"
