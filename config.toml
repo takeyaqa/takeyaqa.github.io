@@ -14,9 +14,9 @@ hasCJKLanguage = true
 
 [params]
     author = "takeya0x86"
+    info = "QA Engineer. He/him"
     description = "writing about tests and automations."
     keywords = "blog,developer,personal,Selenium,Appium"
-    info = "QA Engineer."
     avatarurl = "/images/avatar.jpg"
     footercontent = "CC BY-SA 4.0"
 
@@ -41,17 +41,17 @@ hasCJKLanguage = true
 
 [[params.social]]
     name = "Github"
-    icon = "fab fa-github"
+    icon = "fa fa-github fa-2x"
     weight = 1
     url = "https://github.com/takeya0x86"
 [[params.social]]
     name = "Twitter"
-    icon = "fab fa-twitter"
+    icon = "fa fa-twitter fa-2x"
     weight = 2
     url = "https://twitter.com/takeya0x86"
 [[params.social]]
     name = "RSS"
-    icon = "fas fa-rss"
+    icon = "fa fa-rss fa-2x"
     weight = 3
     url = "./index.xml"
     rel = "alternate"
