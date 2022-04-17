@@ -56,7 +56,6 @@ hasCJKLanguage = true
     url = "./index.xml"
     rel = "alternate"
     type = "application/rss+xml"
-
 [[menu.main]]
     name = "Blog"
     weight = 1
@@ -65,3 +64,11 @@ hasCJKLanguage = true
     name = "Tags"
     weight = 2
     url  = "tags/"
+[[menu.main]]
+    name = "Wantedly"
+    weight = 3
+    url = "https://www.wantedly.com/id/takeya0x86"
+[[menu.main]]
+    name = "Lapras"
+    weight = 4
+    url = "https://lapras.com/public/takeya0x86"
