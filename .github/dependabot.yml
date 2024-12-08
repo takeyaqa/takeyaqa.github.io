@@ -4,4 +4,6 @@ updates:
     directory: "/"
     schedule:
       interval: "daily"
-      timezone: "Asia/Tokyo"
+    commit-message:
+      prefix: "ci"
+      include: "scope"
