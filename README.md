@@ -4,7 +4,7 @@
 
 You can use Python's built-in HTTP server to serve these static files:
 
-```
+```bash
 # Default port 8000
 python -m http.server
 
